@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Trabajo Práctico Integrador - Objetos 2 UNQ 2018 - 1er Semestre </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.1.3 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={previous:"Anterior",next:"Siguiente",show:"Mostrar",hide:"Ocultar",showFeedback:"Mostrar retroalimentación",hideFeedback:"Ocultar retroalimentación",correct:"Correcto",incorrect:"Incorrecto",menu:"Menú",download:"Descargar",print:"Imprimir"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-0"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li id="active"><a href="index.html" class="active no-ch main-node">Trabajo Práctico Integrador - Objetos 2 UNQ 2018 - 1er Semestre</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Trabajo Práctico Integrador - Objetos 2 UNQ 2018 - 1er Semestre</h1></header>
+<article class="iDevice_wrapper objectivesIdevice em_iDevice" id="id4">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Objetivos</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta4_41_2" class="block iDevice_content">
+<p><span>Integrar en la práctica los conocimientos del Diseño y Programación OO estudiados a lo largo de </span><span>todo el año.</span></p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper objectivesIdevice em_iDevice" id="id5">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Casa de Apuestas Deportivas Online</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta5_42_2" class="block iDevice_content">
+<h1><strong>Introducción</strong></h1>
+<p><span style="font-weight: 400;">Un casa de apuestas deportivas online permite a usuarios realizar distintos tipos de apuestas relacionadas a eventos deportivos. La casa de apuestas trabaja con los siguientes deportes: fútbol, tenis, basquetball, voley y boxeo.</span></p>
+<h1>Partido/Juego</h1>
+<p>Un partido o juego es una competencia deportiva en el que se enfrentan dos oponentes y tiene un resultado final. El deporte en cuestión determina qué tipos de oponentes se enfrentan y cuáles son los posibles resultados. Los deportes en conjunto enfrentan a equipos (compuesto por deportistas), mientras que los deportes individuales enfrentan a deportistas individuales. Asimismo, mientras en todos los deportes puede existir un ganador y un perdedor, sólo algunos deportes pueden arrojar un empate como resultado. Por ejemplo, el tenis es un deporte individual en el que un juego siempre finaliza con un deportista ganador y otro perdedor. Mientras que el fútbol es un deporte en equipo que admite el empate como resultado final.</p>
+<p><span style="font-weight: 400;">De un partido se conoce:</span></p>
+<ul>
+<li>Deporte</li>
+<li>Oponentes</li>
+<li>Fecha y hora de comienzo</li>
+<li>Lugar donde se desarrolla la competición</li>
+<li>Resultado parcial o final (siempre que la competición haya comenzado)</li>
+</ul>
+<p>De los deportistas se conoce el nombre, apellido, fecha y lugar de nacimiento. Mientras que un equipo, compuesto por deportistas, se caracteriza por un nombre.</p>
+<h1>Cuotas de apuestas</h1>
+<p>Al momento de crear un evento deportivo, se debe calcular la cuota o, dicho de otro modo, cuánto “pagará” cada posible resultado. La cuota de un posible resultado es un reflejo de la probabilidad de que se dé tal resultado.</p>
+<p><br />En el caso de un pronóstico acertado, la cuota servirá para determinar la ganancia obtenida a partir de dicho acierto. Por ejemplo, si la cuota de un posible resultado es de 2.00, significa que la casa de apuestas pagará 2.00 pesos por cada peso apostado en caso de acierto. Entonces, si se apuestan 10 pesos de forma acertada, la ganancia bruta del apostador ascenderá a 20 y la neta, a 10.</p>
+<p><br />La gran cantidad de eventos que se disputan diariamente dificultan la estimación “manual” de la probabilidad de cada resultado posible. Por eso, las casas de apuestas utilizan distintos algoritmos para decidir las mismas. A continuación se detallan los mismos:</p>
+<ul>
+<li>Competencia histórica directa: se decide utilizando el historial de enfrentamientos directos entre los oponentes. Por ejemplo, si el historial entre dos equipos de fútbol consta de 20 partidos, de los cuales el equipo A ha ganado 14, el B 4 y el resto fueron empates, entonces la probabilidad de que el equipo A resulte victorioso es 0.7, que lo sea el equipo B es 0.2 y el empate 0.1.</li>
+<li>Historia reciente: se toman los 10 partidos más recientes de cada oponente y se toma la proporción de resultados para determinar la probabilidad. Por ejemplo si un equipo ha ganado 3 de sus últimos 10 partidos, la probabilidad de ganar el próximo será de 0.3. La probabildad de un empate, en este caso, se calcula como el promedio entre la probabilidad de empate de cada oponente.</li>
+</ul>
+<p>Una vez calculada la probabilidad de cada posible resultado, se decide la cuota con la siguiente cuenta: Cuota de victoria oponente X = 1 + (1 - probabilidad de victoria del oponente X). Por ejemplo, si la probabilidad de que triunfe el equipo A es 0.7, la cuota del equipo A será 1,3.</p>
+<p>Usted debe considerar que en cualquier momento la casa de apuestas puede cambiar el algoritmo utilizado y que, además, deben poder agregarse nuevos algoritmos en cualquier momento.</p>
+<h1>Apuesta</h1>
+<p>Un usuario que ingresa al sitio puede realizar sus apuestas. Luego de buscar el partido en el cual quiere apostar, selecciona su apuesta y decide el monto que apostará en el mismo. <span style="font-weight: 400;">De una apuesta se debe poder conocer la ganacia bruta y la ganancia neta (explicadas con anterioridad). Sin embargo, no es posible determinar la ganancia de una apuesta cuyo partido aún no ha finalizado. </span></p>
+<p><br />Existen dos tipos de apuestas: apuesta <em>final</em> y apuesta <em>segura</em>.</p>
+<h3>Apuesta final</h3>
+<p><span style="font-weight: 400;">La apuesta </span><i><span style="font-weight: 400;">final</span></i><span style="font-weight: 400;"> es una puesta que no puede cancelarse en ningún momento.</span></p>
+<p><span style="font-weight: 400;"></span><span style="font-weight: 400;"></span></p>
+<h3><strong>Apuesta segura</strong></h3>
+<p>La apuesta segura permite al usuario cancelar la misma. La contrapartida de este tipo de apuesta es que, en caso de acierto, al usuario se le descontará el 15% de la ganancia obtenida para dicha apuesta.</p>
+<p>En cuanto a la cancelación, existen algunas condiciones que dependen del momento en que se quiere realizar la misma:</p>
+<ul>
+<li>Si el partido aún no ha comenzado, entonces la apuesta se puede cancelar y se le cobra al usuario una penalidad fija de $200. Si el usuario se arrepiente de haber cancelado la apuesta, y el partido aún ha comenzado, puede reactivarla. </li>
+<li>Si el partido está en juego, entonces la apuesta se puede cancelar y se le cobra al usuario una penalidad del 30% del total que haya apostado. Con el partido en juego la apuesta no puede ser reactivada. </li>
+<li>Si el partido ha finalizado, no es posible cancelar la apuesta.</li>
+</ul>
+<h1>Envío mensual de balance</h1>
+<p>El último día de cada mes el sitio de apuestas online le debe enviar a cada usuario el balance (ganancia) del mes. El envío del balance se realiza vía mensaje de texto. Para ello, asuma que existe la siguiente definición:</p>
+<div class="pre-code">
+<div>
+<pre><code>public interface BalanceNotifier{
+   void notifyBalance(User user, Integer month, BigDecimal monthlyBalance);
+}
+
+public class TextMessageBalanceNotifier implements BalanceNotifier{
+   @Override
+   void notifyBalance(User user, Integer month, BigDecimal monthlyBalance)
+   {
+      ...
+   }
+}</code></pre>
+</div>
+</div>
+<p>Nota: usted no debe implementar la clase TextMessageBalanceNotifier. Simplemente asuma que exista.</p>
+<p></p>
+<h1>Esto no es todo</h1>
+<p>El sitio cuenta con más funcionalidades que se basan en lo que se describe en este documento. Estas funcionalidades restantes serán detalladas próximamente. Mientras tanto, la información de este documento es válida para comenzar a realizar los diseños preliminares del modelo del sitio.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper objectivesIdevice em_iDevice" id="id10">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Cronograma y Pautas de Entrega</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta10_47_2" class="block iDevice_content">
+<p style="font-weight: 400;"><strong><span><span style="text-decoration: underline;">Estructura:</span><br /><br /></span></strong></p>
+<p style="font-weight: 400;"><span style="font-weight: 400;"><span>Este trabajo integrador está planificado para ser realizado en dos etapas:</span></span></p>
+<ul style="font-weight: 400;">
+<li><span style="font-weight: 400;"><span>Hito 1: Se centra en la primera entrega del enunciado y se debe trabajar sobre el Modelo de Clases y codificación en Java.</span></span></li>
+<li><span style="font-weight: 400;"><span>Hito 2: Se centra en una una extensión del enunciado original, y se debe trabajar sobre la extensión del Modelo de Clases y su codificación completa en Java.</span></span></li>
+</ul>
+<p style="font-weight: 400;"><strong><span><span style="text-decoration: underline;">Cronograma:</span><br /><br /></span></strong></p>
+<p style="font-weight: 400;"><span style="font-weight: 400;"><span>Se establecen tres instancias de visado, en las cuales deberán estar presentes todos los miembros del grupo para defender el trabajo:</span></span></p>
+<ul style="font-weight: 400;">
+<li><span style="font-weight: 400;"><span>Primer visado de Hito 1: Presencial en la práctica del Viernes 1 de Junio de 2018.</span></span></li>
+<li><span style="font-weight: 400;"><span>Primer visado de Hito 2: Presencial en la práctica del Viernes 22 de Junio de 2018.</span></span></li>
+<li><span style="font-weight: 400;"><span>Segundo visado de Hito 2 (visado final): Presencial en la práctica del Viernes 6 de Julio de 2018.</span></span></li>
+</ul>
+<p style="font-weight: 400;"><span style="text-decoration: underline;"><span style="font-weight: 400;"><strong>Entrega del Hito 1</strong>:<br /></span></span></p>
+<ul>
+<li>
+<div style="font-weight: 400;"><span>Modelo de Clases: realizar el modelo de clases para el dominio descripto y confeccionar el Diagrama de Clases en UML correspondiente. </span><span style="line-height: 14.4px;"></span><span style="font-weight: 400;">Debe entregar </span><b style="line-height: 14.4px;">un único archivo</b><span style="font-weight: 400;"> en </span><b style="line-height: 14.4px;">formato PDF</b><span style="font-weight: 400;">. No se aceptarán entregas en otros formato.</span><span style="font-weight: 400;"><br /></span></div>
+</li>
+<li>
+<div style="font-weight: 400;"><span>Codificación en Java: debe tener codificado en Java al menos la funcionalidad correspondiente a las secciones <em>Partido/Juego</em> y <em>Cuotas de Apuestas</em>. Debe incluir <em>tests</em>, con al menos un 95% de cobertura utilizando la herramienta de eclipse EclEmma.</span><span style="font-weight: 400;"></span></div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_max_js.js"></script></body></html>
