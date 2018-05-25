@@ -13,7 +13,7 @@ public class HistoriaReciente implements IAlgoritmo {
 
     public HistoriaReciente(IHistorial historial) {this.historial = historial;}
 
-    private BigDecimal probabilidadDe(IOponente a, String v){
+    private BigDecimal probabilidadDe(IOponente a, String v) {
         List<String> historia = historial.ultimosNPartidos(a, 10);
         return new BigDecimal(historia.stream().filter(r -> r.equals(v)).count())
                 .divide(new BigDecimal(historia.size()), 2, RoundingMode.HALF_DOWN);

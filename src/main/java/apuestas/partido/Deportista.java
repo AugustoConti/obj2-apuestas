@@ -2,7 +2,7 @@ package apuestas.partido;
 
 import java.time.LocalDate;
 
-public class Deportista implements IOponente{
+public class Deportista implements IOponente {
     private String nombre;
     private String apellido;
     private LocalDate nacimiento;

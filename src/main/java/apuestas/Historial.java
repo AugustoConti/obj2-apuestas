@@ -4,7 +4,7 @@ import apuestas.partido.IOponente;
 
 import java.util.List;
 
-public class Historial implements IHistorial{
+public class Historial implements IHistorial {
 
     @Override
     public int victoriasDe(IOponente a, IOponente b) {

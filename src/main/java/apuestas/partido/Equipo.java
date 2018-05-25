@@ -2,7 +2,7 @@ package apuestas.partido;
 
 import java.util.List;
 
-public class Equipo implements IOponente{
+public class Equipo implements IOponente {
     private String nombre;
     private List<Deportista> deportistas;
 

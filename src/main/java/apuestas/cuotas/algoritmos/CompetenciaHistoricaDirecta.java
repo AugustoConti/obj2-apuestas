@@ -12,8 +12,8 @@ public class CompetenciaHistoricaDirecta implements IAlgoritmo {
 
     public CompetenciaHistoricaDirecta(IHistorial historial) {this.historial = historial;}
 
-    private BigDecimal victoriasSobre(IOponente a, IOponente b){
-        return new BigDecimal((double)historial.victoriasDe(a, b) / historial.cantidadEnfrentamientos(a, b),
+    private BigDecimal victoriasSobre(IOponente a, IOponente b) {
+        return new BigDecimal((double) historial.victoriasDe(a, b) / historial.cantidadEnfrentamientos(a, b),
                 new MathContext(2));
     }
 
@@ -24,7 +24,7 @@ public class CompetenciaHistoricaDirecta implements IAlgoritmo {
 
     @Override
     public BigDecimal empate(IOponente a, IOponente b) {
-        return new BigDecimal((double)historial.empatesEntre(a, b) / historial.cantidadEnfrentamientos(a, b),
+        return new BigDecimal((double) historial.empatesEntre(a, b) / historial.cantidadEnfrentamientos(a, b),
                 new MathContext(2));
     }
 
