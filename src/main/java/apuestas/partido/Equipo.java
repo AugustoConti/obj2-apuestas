@@ -1,8 +1,8 @@
-package apuestas.juego;
+package apuestas.partido;
 
 import java.util.List;
 
-class Equipo {
+public class Equipo implements IOponente{
     private String nombre;
     private List<Deportista> deportistas;
 

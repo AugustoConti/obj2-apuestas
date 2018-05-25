@@ -1,4 +1,4 @@
-package apuestas.juego;
+package apuestas.partido;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
