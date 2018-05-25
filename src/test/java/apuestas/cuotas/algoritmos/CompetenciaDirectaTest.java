@@ -1,6 +1,7 @@
 package apuestas.cuotas.algoritmos;
 
 import apuestas.IHistorial;
+import apuestas.cuotas.algoritmos.competenciaDirecta.CompetenciaDirecta;
 import apuestas.partido.IOponente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,9 +14,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class CompetenciaHistoricaDirectaTest {
+class CompetenciaDirectaTest {
 
-    private CompetenciaHistoricaDirecta compe;
+    private CompetenciaDirecta compe;
     private IOponente a;
     private IOponente b;
 
@@ -28,7 +29,7 @@ class CompetenciaHistoricaDirectaTest {
         when(historial.victoriasDe(b, a)).thenReturn(4);
         when(historial.empatesEntre(any(IOponente.class), any(IOponente.class))).thenReturn(2);
         when(historial.cantidadEnfrentamientos(any(IOponente.class), any(IOponente.class))).thenReturn(20);
-        compe = new CompetenciaHistoricaDirecta(historial);
+        compe = new CompetenciaDirecta(historial);
     }
 
     @Test
