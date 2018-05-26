@@ -45,14 +45,14 @@ Un usuario que ingresa al sitio puede realizar sus apuestas. Luego de buscar el 
 > Existen dos tipos de apuestas: apuesta final y apuesta segura.
 
 ### Apuesta final
-La apuesta final es una puesta que no puede cancelarse en ningún momento.
+La apuesta final es una apuesta que no puede cancelarse en ningún momento.
 
 ### Apuesta segura
 La apuesta segura permite al usuario cancelar la misma. La contrapartida de este tipo de apuesta es que, en caso de acierto, al usuario se le descontará el 15% de la ganancia obtenida para dicha apuesta.
 
 En cuanto a la cancelación, existen algunas condiciones que dependen del momento en que se quiere realizar la misma:
 
-- Si el partido aún no ha comenzado, entonces la apuesta se puede cancelar y se le cobra al usuario una penalidad fija de $200. Si el usuario se arrepiente de haber cancelado la apuesta, y el partido aún ha comenzado, puede reactivarla.
+- Si el partido aún no ha comenzado, entonces la apuesta se puede cancelar y se le cobra al usuario una penalidad fija de $200. Si el usuario se arrepiente de haber cancelado la apuesta, y el partido aún no ha comenzado, puede reactivarla.
 - Si el partido está en juego, entonces la apuesta se puede cancelar y se le cobra al usuario una penalidad del 30% del total que haya apostado. Con el partido en juego la apuesta no puede ser reactivada.
 - Si el partido ha finalizado, no es posible cancelar la apuesta.
 
