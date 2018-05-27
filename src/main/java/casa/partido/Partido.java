@@ -1,11 +1,13 @@
 package casa.partido;
 
+import casa.IEstado;
+import casa.partido.deportes.IDeporte;
 import casa.partido.estados.EstadoPartido;
 
 import java.time.LocalDateTime;
 
 public class Partido implements IPartido {
-    private Deporte deporte;
+    private IDeporte deporte;
     private IOponente local;
     private IOponente visitante;
     private LocalDateTime comienzo;
@@ -13,7 +15,7 @@ public class Partido implements IPartido {
     private String resultado;
     private EstadoPartido estado;
 
-    public Partido(Deporte deporte, IOponente local, IOponente visitante, LocalDateTime comienzo, String lugar,
+    public Partido(IDeporte deporte, IOponente local, IOponente visitante, LocalDateTime comienzo, String lugar,
                    String resultado, EstadoPartido estado) {
         this.deporte = deporte;
         this.local = local;
@@ -35,7 +37,29 @@ public class Partido implements IPartido {
     }
 
     @Override
+    public boolean terminado() {
+        return estado.terminado();
+    }
+
+    @Override
+    public boolean acierto(String favorito) {
+        if (resultado.equals("E") && !deporte.admiteEmpate())
+            throw new Exception(String.format("", ))
+        return resultado.equals(favorito);
+    }
+
+    @Override
     public boolean inMonth(Integer month) {
         return comienzo.getMonth().getValue() == month;
+    }
+
+    @Override
+    public void cancelarApuesta(IEstado apuesta) throws Exception {
+        estado.cancelarApuesta(apuesta);
+    }
+
+    @Override
+    public void reactivarApuesta(IEstado apuesta) throws Exception {
+        estado.reactivarApuesta(apuesta);
     }
 }

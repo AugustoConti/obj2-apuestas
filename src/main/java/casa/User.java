@@ -22,7 +22,11 @@ public class User {
         BigDecimal ganancia = new BigDecimal(0);
         for (Apuesta a : apuestas){
             if(a.inMonth(month)) {
-                ganancia = ganancia.add(a.gananciaBruta());
+                try {
+                    ganancia = ganancia.add(a.gananciaBruta());
+                } catch (Exception e) {
+                    //e.printStackTrace();
+                }
             }
         }
         return ganancia;

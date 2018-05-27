@@ -1,6 +1,5 @@
 package casa.apuestas;
 
-import casa.apuestas.estados.EstadoApuesta;
 import casa.apuestas.tipos.TipoApuesta;
 
 import java.math.BigDecimal;
@@ -10,22 +9,30 @@ public class Apuesta {
     private String favorito;
     private Evento evento;
     private TipoApuesta tipo;
-    private EstadoApuesta estado;
 
-    public void cancelar(){
-
+    public Apuesta(BigDecimal monto, String favorito, Evento evento, TipoApuesta tipo) {
+        this.monto = monto;
+        this.favorito = favorito;
+        this.evento = evento;
+        this.tipo = tipo;
     }
 
-    public void reactivar(){
-
+    public void cancelar() throws Exception {
+        tipo.cancelar(evento);
     }
 
-    public BigDecimal gananciaBruta() {
-        return new BigDecimal(0);
+    public void reactivar() throws Exception {
+        tipo.reactivar(evento);
     }
 
-    public BigDecimal gananciaNeta() {
-        return gananciaBruta().subtract(monto);
+    public BigDecimal gananciaBruta() throws Exception {
+        return gananciaNeta().add(monto);
+    }
+
+    public BigDecimal gananciaNeta() throws Exception {
+        if (!evento.terminado())
+            throw new Exception("El evento no ha terminado");
+        return tipo.ganancia(evento, favorito, monto);
     }
 
     public boolean inMonth(Integer month) {

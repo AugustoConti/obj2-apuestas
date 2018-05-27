@@ -69,7 +69,7 @@ public class TextMessageBalanceNotifier implements BalanceNotifier{
 	@Override
 	void notifyBalance(User user, Integer month, BigDecimal monthlyBalance)
 	{
-		...
+		//codigo
 	}
 }
 ```
