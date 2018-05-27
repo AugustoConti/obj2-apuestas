@@ -1,8 +1,8 @@
 package casa.partido.estados;
 
-import casa.IEstado;
-import casa.apuestas.tipos.estados.Activa;
-import casa.apuestas.tipos.estados.CanceladaNoEmpezado;
+import casa.ITipeable;
+import casa.apuestas.tipos.SeguraActiva;
+import casa.apuestas.tipos.SeguraCanceladaNoEmpezado;
 
 public class NoEmpezado implements EstadoPartido {
     @Override
@@ -11,12 +11,12 @@ public class NoEmpezado implements EstadoPartido {
     }
 
     @Override
-    public void cancelarApuesta(IEstado apuesta) {
-        apuesta.setEstado(new CanceladaNoEmpezado());
+    public void cancelarApuesta(ITipeable apuesta) {
+        apuesta.setTipo(new SeguraCanceladaNoEmpezado());
     }
 
     @Override
-    public void reactivarApuesta(IEstado apuesta) {
-        apuesta.setEstado(new Activa());
+    public void reactivarApuesta(ITipeable apuesta) {
+        apuesta.setTipo(new SeguraActiva());
     }
 }

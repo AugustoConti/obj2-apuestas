@@ -1,6 +1,6 @@
 package casa.partido;
 
-import casa.IEstado;
+import casa.ITipeable;
 import casa.partido.deportes.IDeporte;
 import casa.partido.estados.EstadoPartido;
 
@@ -42,9 +42,9 @@ public class Partido implements IPartido {
     }
 
     @Override
-    public boolean acierto(String favorito) {
+    public boolean acierto(String favorito) throws Exception {
         if (resultado.equals("E") && !deporte.admiteEmpate())
-            throw new Exception(String.format("", ))
+            throw new Exception(String.format("%s no admite empate", deporte.nombre()));
         return resultado.equals(favorito);
     }
 
@@ -54,12 +54,12 @@ public class Partido implements IPartido {
     }
 
     @Override
-    public void cancelarApuesta(IEstado apuesta) throws Exception {
+    public void cancelarApuesta(ITipeable apuesta) throws Exception {
         estado.cancelarApuesta(apuesta);
     }
 
     @Override
-    public void reactivarApuesta(IEstado apuesta) throws Exception {
+    public void reactivarApuesta(ITipeable apuesta) throws Exception {
         estado.reactivarApuesta(apuesta);
     }
 }

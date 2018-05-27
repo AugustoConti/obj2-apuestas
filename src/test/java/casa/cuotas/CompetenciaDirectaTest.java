@@ -1,8 +1,9 @@
-package casa.cuotas.algoritmos;
+package casa.cuotas;
 
 import casa.IHistorial;
 import casa.cuotas.CompetenciaDirecta;
 import casa.partido.IOponente;
+import casa.partido.IPartido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,13 +18,17 @@ import static org.mockito.Mockito.when;
 class CompetenciaDirectaTest {
 
     private CompetenciaDirecta compe;
-    private IOponente a;
-    private IOponente b;
+    private IPartido partido;
 
     @BeforeEach
     void setUp() {
-        a = mock(IOponente.class);
-        b = mock(IOponente.class);
+        IOponente a = mock(IOponente.class);
+        IOponente b = mock(IOponente.class);
+
+        partido = mock(IPartido.class);
+        when(partido.local()).thenReturn(a);
+        when(partido.visitante()).thenReturn(b);
+
         IHistorial historial = mock(IHistorial.class);
         when(historial.victoriasDe(a, b)).thenReturn(14);
         when(historial.victoriasDe(b, a)).thenReturn(4);
@@ -34,22 +39,22 @@ class CompetenciaDirectaTest {
 
     @Test
     void local() {
-        BigDecimal result = compe.local(a, b);
+        BigDecimal result = compe.local(partido);
         BigDecimal expected = new BigDecimal(0.70, new MathContext(2));
-        assertTrue(result.compareTo(expected) == 0);
+        assertEquals(0, result.compareTo(expected));
     }
 
     @Test
     void empate() {
-        BigDecimal result = compe.empate(mock(IOponente.class), mock(IOponente.class));
+        BigDecimal result = compe.empate(partido);
         BigDecimal expected = new BigDecimal(0.10, new MathContext(2));
-        assertTrue(result.compareTo(expected) == 0);
+        assertEquals(0, result.compareTo(expected));
     }
 
     @Test
     void visitante() {
-        BigDecimal result = compe.local(b, a);
+        BigDecimal result = compe.visitante(partido);
         BigDecimal expected = new BigDecimal(0.20, new MathContext(2));
-        assertTrue(result.compareTo(expected) == 0);
+        assertEquals(0, result.compareTo(expected));
     }
 }

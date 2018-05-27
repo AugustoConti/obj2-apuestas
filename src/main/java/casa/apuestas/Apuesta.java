@@ -1,10 +1,11 @@
 package casa.apuestas;
 
+import casa.ITipeable;
 import casa.apuestas.tipos.TipoApuesta;
 
 import java.math.BigDecimal;
 
-public class Apuesta {
+public class Apuesta implements ITipeable {
     private BigDecimal monto;
     private String favorito;
     private Evento evento;
@@ -17,12 +18,14 @@ public class Apuesta {
         this.tipo = tipo;
     }
 
+    public void setTipo(TipoApuesta tipo){ this.tipo = tipo; }
+
     public void cancelar() throws Exception {
-        tipo.cancelar(evento);
+        tipo.cancelar(evento, this);
     }
 
     public void reactivar() throws Exception {
-        tipo.reactivar(evento);
+        tipo.reactivar(evento, this);
     }
 
     public BigDecimal gananciaBruta() throws Exception {

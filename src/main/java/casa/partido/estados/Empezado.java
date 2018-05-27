@@ -1,7 +1,7 @@
 package casa.partido.estados;
 
-import casa.IEstado;
-import casa.apuestas.tipos.estados.CanceladaEmpezado;
+import casa.ITipeable;
+import casa.apuestas.tipos.SeguraCanceladaEmpezado;
 
 public class Empezado implements EstadoPartido {
     @Override
@@ -10,12 +10,12 @@ public class Empezado implements EstadoPartido {
     }
 
     @Override
-    public void cancelarApuesta(IEstado apuesta) {
-        apuesta.setEstado(new CanceladaEmpezado());
+    public void cancelarApuesta(ITipeable apuesta) {
+        apuesta.setTipo(new SeguraCanceladaEmpezado());
     }
 
     @Override
-    public void reactivarApuesta(IEstado apuesta) throws Exception {
+    public void reactivarApuesta(ITipeable apuesta) throws Exception {
         throw new Exception("No se puede reactivar apuesta con el partido empezado");
     }
 }

@@ -1,6 +1,6 @@
 package casa.apuestas;
 
-import casa.IEstado;
+import casa.ITipeable;
 import casa.cuotas.IAlgoritmo;
 import casa.partido.IPartido;
 
@@ -24,11 +24,11 @@ public class Evento {
         return partido.inMonth(month);
     }
 
-    public void cancelarApuesta(IEstado apuesta) throws Exception {
+    public void cancelarApuesta(ITipeable apuesta) throws Exception {
         partido.cancelarApuesta(apuesta);
     }
 
-    public void reactivarApuesta(IEstado apuesta) throws Exception {
+    public void reactivarApuesta(ITipeable apuesta) throws Exception {
         partido.reactivarApuesta(apuesta);
     }
 
@@ -36,7 +36,7 @@ public class Evento {
         return partido.terminado();
     }
 
-    public boolean acierto(String favorito) {
+    public boolean acierto(String favorito) throws Exception {
         return partido.acierto(favorito);
     }
 
