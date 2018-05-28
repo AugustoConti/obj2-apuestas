@@ -104,3 +104,5 @@ Se establecen tres instancias de visado, en las cuales deberán estar presentes 
 - Modelo de Clases: realizar el modelo de clases para el dominio descripto y confeccionar el Diagrama de Clases en UML correspondiente. Debe entregar un único archivo en formato PDF. No se aceptarán entregas en otros formato.
 
 - Codificación en Java: debe tener codificado en Java al menos la funcionalidad correspondiente a las secciones Partido/Juego y Cuotas de Apuestas. Debe incluir tests, con al menos un 95% de cobertura utilizando la herramienta de eclipse EclEmma.
+
+.
