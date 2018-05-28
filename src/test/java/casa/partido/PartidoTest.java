@@ -19,16 +19,18 @@ class PartidoTest {
     private IOponente local;
     private IOponente visitante;
     private EstadoPartido estado;
+    private IDeporte deporte;
 
     @BeforeEach
     void setUp() {
         local = mock(IOponente.class);
         visitante = mock(IOponente.class);
         estado = mock(EstadoPartido.class);
+        deporte = mock(IDeporte.class);
         when(estado.terminado()).thenReturn(true);
-        partido = new Partido(mock(IDeporte.class), local, visitante,
+        partido = new Partido(deporte, local, visitante,
                 LocalDateTime.of(2018, 5,25,10,0), "Bernal",
-                "L", estado);
+                "E", estado);
     }
 
     @Test
@@ -48,8 +50,9 @@ class PartidoTest {
 
     @Test
     void aciertoTrue() {
+        when(deporte.admiteEmpate()).thenReturn(true);
         try {
-            assertTrue(partido.acierto("L"));
+            assertTrue(partido.acierto("E"));
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -57,10 +60,22 @@ class PartidoTest {
 
     @Test
     void aciertoFalse() {
+        when(deporte.admiteEmpate()).thenReturn(true);
         try {
             assertFalse(partido.acierto("V"));
         } catch(Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    void aciertoThrow() {
+        when(deporte.admiteEmpate()).thenReturn(false);
+        try {
+            assertFalse(partido.acierto("E"));
+            fail();
+        } catch(Exception e) {
+            //e.printStackTrace();
         }
     }
 
