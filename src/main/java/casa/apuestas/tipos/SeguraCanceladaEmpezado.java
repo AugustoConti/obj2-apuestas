@@ -4,6 +4,7 @@ import casa.ITipeable;
 import casa.apuestas.Evento;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 public class SeguraCanceladaEmpezado implements TipoApuesta {
     @Override
@@ -18,6 +19,6 @@ public class SeguraCanceladaEmpezado implements TipoApuesta {
 
     @Override
     public BigDecimal ganancia(Evento evento, String favorito, BigDecimal monto) {
-        return monto.multiply(new BigDecimal(0.3));
+        return monto.multiply(new BigDecimal(0.3), new MathContext(2));
     }
 }

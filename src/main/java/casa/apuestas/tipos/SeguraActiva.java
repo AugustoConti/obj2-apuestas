@@ -4,6 +4,7 @@ import casa.ITipeable;
 import casa.apuestas.Evento;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 public class SeguraActiva implements TipoApuesta {
     @Override
@@ -23,6 +24,6 @@ public class SeguraActiva implements TipoApuesta {
             ret = evento.cuota(favorito).multiply(new BigDecimal(0.85));
         else
             ret = new BigDecimal(-1);
-        return ret.multiply(monto);
+        return ret.multiply(monto, new MathContext(2));
     }
 }
