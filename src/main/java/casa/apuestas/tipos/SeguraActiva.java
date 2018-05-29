@@ -18,7 +18,7 @@ public class SeguraActiva implements TipoApuestaInterface {
     }
 
     @Override
-    public BigDecimal ganancia(Evento evento, String favorito, BigDecimal monto) throws Exception {
+    public BigDecimal ganancia(Evento evento, String favorito, BigDecimal monto) {
         BigDecimal ret;
         if(evento.acierto(favorito))
             ret = evento.cuota(favorito).multiply(new BigDecimal(0.85));

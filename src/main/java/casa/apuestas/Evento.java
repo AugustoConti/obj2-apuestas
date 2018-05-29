@@ -36,7 +36,7 @@ public class Evento {
         return partido.terminado();
     }
 
-    public boolean acierto(String favorito) throws Exception {
+    public boolean acierto(String favorito) {
         return partido.acierto(favorito);
     }
 

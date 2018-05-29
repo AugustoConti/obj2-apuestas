@@ -6,7 +6,7 @@ public interface PartidoInterface {
     OponenteInterface local();
     OponenteInterface visitante();
     boolean terminado();
-    boolean acierto(String favorito) throws Exception;
+    boolean acierto(String favorito);
     boolean inMonth(Integer month);
     void cancelarApuesta(TipeableInterface apuesta) throws Exception;
     void reactivarApuesta(TipeableInterface apuesta) throws Exception;

@@ -39,7 +39,6 @@ class ApuestaTest {
     void reactivar() throws Exception {
         apuesta.reactivar();
         verify(tipo).reactivar(evento, apuesta);
-
     }
 
     @Test
@@ -52,7 +51,6 @@ class ApuestaTest {
     @Test
     void gananciaNeta() throws Exception {
         when(evento.terminado()).thenReturn(true);
-
         when(tipo.ganancia(evento, "L", BigDecimal.TEN)).thenReturn(BigDecimal.ONE);
         assertEquals(0, apuesta.gananciaNeta().compareTo(BigDecimal.ONE));
     }
@@ -60,7 +58,6 @@ class ApuestaTest {
     @Test
     void gananciaNetaTerminado() {
         when(evento.terminado()).thenReturn(false);
-
         assertThrows(Exception.class, () -> apuesta.gananciaNeta());
     }
 

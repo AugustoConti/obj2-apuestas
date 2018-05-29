@@ -51,29 +51,13 @@ class PartidoTest {
     @Test
     void aciertoTrue() throws Exception {
         when(deporte.admiteEmpate()).thenReturn(true);
-
         assertTrue(partido.acierto("E"));
-
     }
 
     @Test
     void aciertoFalse() throws Exception {
         when(deporte.admiteEmpate()).thenReturn(true);
         assertFalse(partido.acierto("V"));
-
-    }
-
-    @Test
-    void aciertoThrow() throws Exception {
-        when(deporte.admiteEmpate()).thenReturn(false);
-        when(deporte.nombre()).thenReturn("Number One");
-        Throwable throwable = assertThrows(Exception.class, () -> partido.acierto("E"));
-
-        assertAll(
-                () -> assertEquals("Number One no admite empate", throwable.getMessage()),
-                () -> assertNull(throwable.getCause())
-        );
-
     }
 
     @Test
@@ -88,11 +72,9 @@ class PartidoTest {
 
     @Test
     void cancelarApuesta() throws Exception {
-
         TipeableInterface apuesta = mock(TipeableInterface.class);
         partido.cancelarApuesta(apuesta);
         verify(estado).cancelarApuesta(apuesta);
-
     }
 
     @Test

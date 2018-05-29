@@ -42,9 +42,7 @@ public class Partido implements PartidoInterface {
     }
 
     @Override
-    public boolean acierto(String favorito) throws Exception {
-        if (resultado.equals("E") && !deporte.admiteEmpate())
-            throw new Exception(String.format("%s no admite empate", deporte.nombre()));
+    public boolean acierto(String favorito) {
         return resultado.equals(favorito);
     }
 
