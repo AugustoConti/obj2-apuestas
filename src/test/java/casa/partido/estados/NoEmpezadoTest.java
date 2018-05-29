@@ -1,6 +1,6 @@
 package casa.partido.estados;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 import casa.apuestas.tipos.SeguraActiva;
 import casa.apuestas.tipos.SeguraCanceladaNoEmpezado;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,24 +26,18 @@ class NoEmpezadoTest {
     }
 
     @Test
-    void cancelarApuesta() {
-        try {
-            ITipeable apuesta = mock(ITipeable.class);
-            noEmpezado.cancelarApuesta(apuesta);
-            verify(apuesta).setTipo(any(SeguraCanceladaNoEmpezado.class));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void cancelarApuesta() throws Exception {
+        TipeableInterface apuesta = mock(TipeableInterface.class);
+        noEmpezado.cancelarApuesta(apuesta);
+        verify(apuesta).setTipo(any(SeguraCanceladaNoEmpezado.class));
     }
 
     @Test
-    void reactivarApuesta() {
-        try {
-            ITipeable apuesta = mock(ITipeable.class);
-            noEmpezado.reactivarApuesta(apuesta);
-            verify(apuesta).setTipo(any(SeguraActiva.class));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void reactivarApuesta() throws Exception {
+
+        TipeableInterface apuesta = mock(TipeableInterface.class);
+        noEmpezado.reactivarApuesta(apuesta);
+        verify(apuesta).setTipo(any(SeguraActiva.class));
+
     }
 }

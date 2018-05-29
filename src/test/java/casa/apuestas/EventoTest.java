@@ -1,8 +1,8 @@
 package casa.apuestas;
 
-import casa.ITipeable;
-import casa.cuotas.IAlgoritmo;
-import casa.partido.IPartido;
+import casa.TipeableInterface;
+import casa.cuotas.AlgortimoInterface;
+import casa.partido.PartidoInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,16 +17,16 @@ import static org.mockito.Mockito.when;
 class EventoTest {
 
     private Evento evento;
-    private IPartido partido;
+    private PartidoInterface partido;
 
     @BeforeEach
     void setUp() {
-        partido = mock(IPartido.class);
+        partido = mock(PartidoInterface.class);
 
-        IAlgoritmo algoritmo = mock(IAlgoritmo.class);
-        when(algoritmo.local(any(IPartido.class))).thenReturn(BigDecimal.ZERO);
-        when(algoritmo.empate(any(IPartido.class))).thenReturn(BigDecimal.ONE);
-        when(algoritmo.visitante(any(IPartido.class))).thenReturn(BigDecimal.TEN);
+        AlgortimoInterface algoritmo = mock(AlgortimoInterface.class);
+        when(algoritmo.local(any(PartidoInterface.class))).thenReturn(BigDecimal.ZERO);
+        when(algoritmo.empate(any(PartidoInterface.class))).thenReturn(BigDecimal.ONE);
+        when(algoritmo.visitante(any(PartidoInterface.class))).thenReturn(BigDecimal.TEN);
 
         evento = new Evento(partido, algoritmo);
     }
@@ -38,23 +38,17 @@ class EventoTest {
     }
 
     @Test
-    void cancelarApuesta() {
-        try {
-            evento.cancelarApuesta(mock(ITipeable.class));
-            verify(partido).cancelarApuesta(any(ITipeable.class));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void cancelarApuesta() throws Exception{
+            evento.cancelarApuesta(mock(TipeableInterface.class));
+            verify(partido).cancelarApuesta(any(TipeableInterface.class));
+
     }
 
     @Test
-    void reactivarApuesta() {
-        try {
-            evento.reactivarApuesta(mock(ITipeable.class));
-            verify(partido).reactivarApuesta(any(ITipeable.class));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void reactivarApuesta() throws Exception{
+
+            evento.reactivarApuesta(mock(TipeableInterface.class));
+            verify(partido).reactivarApuesta(any(TipeableInterface.class));
     }
 
     @Test
@@ -64,13 +58,9 @@ class EventoTest {
     }
 
     @Test
-    void acierto() {
-        try {
+    void acierto() throws Exception {
             when(partido.acierto("L")).thenReturn(true);
             assertTrue(evento.acierto("L"));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Test

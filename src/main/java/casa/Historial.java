@@ -1,28 +1,28 @@
 package casa;
 
-import casa.partido.IOponente;
+import casa.partido.OponenteInterface;
 
 import java.util.List;
 
-public class Historial implements IHistorial {
+public class Historial implements HistorialInterface {
 
     @Override
-    public int victoriasDe(IOponente a, IOponente b) {
+    public int victoriasDe(OponenteInterface a, OponenteInterface b) {
         return 0;
     }
 
     @Override
-    public int empatesEntre(IOponente a, IOponente b) {
+    public int empatesEntre(OponenteInterface a, OponenteInterface b) {
         return 0;
     }
 
     @Override
-    public int cantidadEnfrentamientos(IOponente a, IOponente b) {
+    public int cantidadEnfrentamientos(OponenteInterface a, OponenteInterface b) {
         return 0;
     }
 
     @Override
-    public List<String> ultimosNPartidos(IOponente a, int n) {
+    public List<String> ultimosNPartidos(OponenteInterface a, int n) {
         return null;
     }
 }

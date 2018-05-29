@@ -1,19 +1,19 @@
 package casa.apuestas;
 
-import casa.ITipeable;
-import casa.cuotas.IAlgoritmo;
-import casa.partido.IPartido;
+import casa.TipeableInterface;
+import casa.cuotas.AlgortimoInterface;
+import casa.partido.PartidoInterface;
 
 import java.math.BigDecimal;
 
 public class Evento {
 
-    private IPartido partido;
+    private PartidoInterface partido;
     private BigDecimal cuotaLocal;
     private BigDecimal cuotaEmpate;
     private BigDecimal cuotaVisitante;
 
-    public Evento(IPartido partido, IAlgoritmo algoritmo) {
+    public Evento(PartidoInterface partido, AlgortimoInterface algoritmo) {
         this.partido = partido;
         cuotaLocal = algoritmo.local(partido);
         cuotaEmpate = algoritmo.empate(partido);
@@ -24,11 +24,11 @@ public class Evento {
         return partido.inMonth(month);
     }
 
-    public void cancelarApuesta(ITipeable apuesta) throws Exception {
+    public void cancelarApuesta(TipeableInterface apuesta) throws Exception {
         partido.cancelarApuesta(apuesta);
     }
 
-    public void reactivarApuesta(ITipeable apuesta) throws Exception {
+    public void reactivarApuesta(TipeableInterface apuesta) throws Exception {
         partido.reactivarApuesta(apuesta);
     }
 

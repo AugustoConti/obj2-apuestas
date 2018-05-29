@@ -1,22 +1,22 @@
 package casa.partido;
 
-import casa.ITipeable;
-import casa.partido.deportes.IDeporte;
+import casa.TipeableInterface;
+import casa.partido.deportes.DeporteInterface;
 import casa.partido.estados.EstadoPartido;
 
 import java.time.LocalDateTime;
 
-public class Partido implements IPartido {
-    private IDeporte deporte;
-    private IOponente local;
-    private IOponente visitante;
+public class Partido implements PartidoInterface {
+    private DeporteInterface deporte;
+    private OponenteInterface local;
+    private OponenteInterface visitante;
     private LocalDateTime comienzo;
     private String lugar;
     private String resultado;
     private EstadoPartido estado;
 
-    public Partido(IDeporte deporte, IOponente local, IOponente visitante, LocalDateTime comienzo, String lugar,
-                   String resultado, EstadoPartido estado) {
+    public Partido(DeporteInterface deporte, OponenteInterface local, OponenteInterface visitante,
+                   LocalDateTime comienzo, String lugar, String resultado, EstadoPartido estado) {
         this.deporte = deporte;
         this.local = local;
         this.visitante = visitante;
@@ -27,12 +27,12 @@ public class Partido implements IPartido {
     }
 
     @Override
-    public IOponente local() {
+    public OponenteInterface local() {
         return this.local;
     }
 
     @Override
-    public IOponente visitante() {
+    public OponenteInterface visitante() {
         return this.visitante;
     }
 
@@ -54,12 +54,12 @@ public class Partido implements IPartido {
     }
 
     @Override
-    public void cancelarApuesta(ITipeable apuesta) throws Exception {
+    public void cancelarApuesta(TipeableInterface apuesta) throws Exception {
         estado.cancelarApuesta(apuesta);
     }
 
     @Override
-    public void reactivarApuesta(ITipeable apuesta) throws Exception {
+    public void reactivarApuesta(TipeableInterface apuesta) throws Exception {
         estado.reactivarApuesta(apuesta);
     }
 }

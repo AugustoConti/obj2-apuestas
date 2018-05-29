@@ -2,11 +2,11 @@ package casa.partido;
 
 import java.util.List;
 
-public class Equipo implements IOponente {
+public class Equipo implements OponenteInterface {
     private String nombre;
-    private List<IOponente> deportistas;
+    private List<OponenteInterface> deportistas;
 
-    Equipo(String nombre, List<IOponente> deportistas) {
+    Equipo(String nombre, List<OponenteInterface> deportistas) {
         this.nombre = nombre;
         this.deportistas = deportistas;
     }

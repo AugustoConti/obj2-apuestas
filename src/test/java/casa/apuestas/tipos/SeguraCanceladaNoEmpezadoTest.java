@@ -1,6 +1,6 @@
 package casa.apuestas.tipos;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 import casa.apuestas.Evento;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,11 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 class SeguraCanceladaNoEmpezadoTest {
 
-    private TipoApuesta canceladaNoEmpezado;
+    private TipoApuestaInterface canceladaNoEmpezado;
 
     @BeforeEach
     void setUp() {
@@ -25,7 +24,7 @@ class SeguraCanceladaNoEmpezadoTest {
     @Test
     void cancelar() {
         try {
-            canceladaNoEmpezado.cancelar(mock(Evento.class), mock(ITipeable.class));
+            canceladaNoEmpezado.cancelar(mock(Evento.class), mock(TipeableInterface.class));
             fail();
         } catch(Exception e) {
             //e.printStackTrace();
@@ -35,7 +34,7 @@ class SeguraCanceladaNoEmpezadoTest {
     @Test
     void reactivar() {
         Evento evento = mock(Evento.class);
-        ITipeable apuesta = mock(ITipeable.class);
+        TipeableInterface apuesta = mock(TipeableInterface.class);
         try {
             canceladaNoEmpezado.reactivar(evento, apuesta);
             verify(evento).reactivarApuesta(apuesta);

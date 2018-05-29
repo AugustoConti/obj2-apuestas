@@ -1,6 +1,6 @@
 package casa.partido.estados;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 
 public class Terminado implements EstadoPartido {
     @Override
@@ -9,12 +9,12 @@ public class Terminado implements EstadoPartido {
     }
 
     @Override
-    public void cancelarApuesta(ITipeable apuesta) throws Exception {
+    public void cancelarApuesta(TipeableInterface apuesta) throws Exception {
         throw new Exception("No se puede cancelar apuesta con el partido terminado");
     }
 
     @Override
-    public void reactivarApuesta(ITipeable apuesta) throws Exception {
+    public void reactivarApuesta(TipeableInterface apuesta) throws Exception {
         throw new Exception("No se puede reactivar apuesta con el partido terminado");
     }
 }

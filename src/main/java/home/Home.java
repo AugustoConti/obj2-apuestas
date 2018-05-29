@@ -1,4 +1,5 @@
-import casa.IHistorial;
+package home;
+import casa.HistorialInterface;
 import casa.User;
 import casa.balance.BalanceNotifier;
 
@@ -6,10 +7,10 @@ import java.util.List;
 
 public class Home {
     private List<User> usuarios;
-    private IHistorial historial;
+    private HistorialInterface historial;
     private BalanceNotifier balanceNotifier;
 
-    public Home(List<User> usuarios, IHistorial historial, BalanceNotifier balanceNotifier) {
+    public Home(List<User> usuarios, HistorialInterface historial, BalanceNotifier balanceNotifier) {
         this.usuarios = usuarios;
         this.historial = historial;
         this.balanceNotifier = balanceNotifier;

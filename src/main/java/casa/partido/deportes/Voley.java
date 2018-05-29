@@ -1,6 +1,6 @@
 package casa.partido.deportes;
 
-public class Voley implements IDeporte {
+public class Voley implements DeporteInterface {
     @Override
     public String nombre() {
         return "Voley";

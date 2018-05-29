@@ -1,6 +1,6 @@
 package casa.partido.estados;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 import casa.apuestas.tipos.SeguraActiva;
 import casa.apuestas.tipos.SeguraCanceladaNoEmpezado;
 
@@ -11,12 +11,12 @@ public class NoEmpezado implements EstadoPartido {
     }
 
     @Override
-    public void cancelarApuesta(ITipeable apuesta) {
+    public void cancelarApuesta(TipeableInterface apuesta) {
         apuesta.setTipo(new SeguraCanceladaNoEmpezado());
     }
 
     @Override
-    public void reactivarApuesta(ITipeable apuesta) {
+    public void reactivarApuesta(TipeableInterface apuesta) {
         apuesta.setTipo(new SeguraActiva());
     }
 }

@@ -1,19 +1,19 @@
 package casa.apuestas.tipos;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 import casa.apuestas.Evento;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class SeguraActiva implements TipoApuesta {
+public class SeguraActiva implements TipoApuestaInterface {
     @Override
-    public void cancelar(Evento evento, ITipeable apuesta) throws Exception {
+    public void cancelar(Evento evento, TipeableInterface apuesta) throws Exception {
         evento.cancelarApuesta(apuesta);
     }
 
     @Override
-    public void reactivar(Evento evento, ITipeable apuesta) throws Exception {
+    public void reactivar(Evento evento, TipeableInterface apuesta) throws Exception {
         throw new Exception("No se puede reactivar una apuesta activa");
     }
 

@@ -1,6 +1,6 @@
 package casa.apuestas;
 
-import casa.apuestas.tipos.TipoApuesta;
+import casa.apuestas.tipos.TipoApuestaInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,71 +15,53 @@ class ApuestaTest {
 
     private Apuesta apuesta;
     private Evento evento;
-    private TipoApuesta tipo;
+    private TipoApuestaInterface tipo;
 
     @BeforeEach
     void setUp() {
         evento = mock(Evento.class);
-        tipo = mock(TipoApuesta.class);
+        tipo = mock(TipoApuestaInterface.class);
         apuesta = new Apuesta(BigDecimal.TEN, "L", evento, tipo);
     }
 
     @Test
     void setTipo() {
-        apuesta.setTipo(mock(TipoApuesta.class));
+        apuesta.setTipo(mock(TipoApuestaInterface.class));
     }
 
     @Test
-    void cancelar() {
-        try {
-            apuesta.cancelar();
-            verify(tipo).cancelar(evento, apuesta);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void cancelar() throws Exception {
+        apuesta.cancelar();
+        verify(tipo).cancelar(evento, apuesta);
     }
 
     @Test
-    void reactivar() {
-        try {
-            apuesta.reactivar();
-            verify(tipo).reactivar(evento, apuesta);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void reactivar() throws Exception {
+        apuesta.reactivar();
+        verify(tipo).reactivar(evento, apuesta);
+
     }
 
     @Test
-    void gananciaBruta() {
+    void gananciaBruta() throws Exception {
         when(evento.terminado()).thenReturn(true);
-        try {
-            when(tipo.ganancia(evento, "L", BigDecimal.TEN)).thenReturn(BigDecimal.ONE);
-            assertEquals(0, apuesta.gananciaBruta().compareTo(new BigDecimal(11)));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        when(tipo.ganancia(evento, "L", BigDecimal.TEN)).thenReturn(BigDecimal.ONE);
+        assertEquals(0, apuesta.gananciaBruta().compareTo(new BigDecimal(11)));
     }
 
     @Test
-    void gananciaNeta() {
+    void gananciaNeta() throws Exception {
         when(evento.terminado()).thenReturn(true);
-        try {
-            when(tipo.ganancia(evento, "L", BigDecimal.TEN)).thenReturn(BigDecimal.ONE);
-            assertEquals(0, apuesta.gananciaNeta().compareTo(BigDecimal.ONE));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+
+        when(tipo.ganancia(evento, "L", BigDecimal.TEN)).thenReturn(BigDecimal.ONE);
+        assertEquals(0, apuesta.gananciaNeta().compareTo(BigDecimal.ONE));
     }
 
     @Test
     void gananciaNetaTerminado() {
         when(evento.terminado()).thenReturn(false);
-        try {
-            apuesta.gananciaNeta();
-            fail();
-        } catch(Exception e) {
-            //e.printStackTrace();
-        }
+
+        assertThrows(Exception.class, () -> apuesta.gananciaNeta());
     }
 
     @Test

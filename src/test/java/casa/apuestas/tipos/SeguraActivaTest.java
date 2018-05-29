@@ -1,6 +1,6 @@
 package casa.apuestas.tipos;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 import casa.apuestas.Evento;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 
 class SeguraActivaTest {
 
-    private TipoApuesta activa;
+    private TipoApuestaInterface activa;
 
     @BeforeEach
     void setUp() {
@@ -22,47 +22,33 @@ class SeguraActivaTest {
     }
 
     @Test
-    void cancelar() {
+    void cancelar() throws Exception {
         Evento evento = mock(Evento.class);
-        ITipeable apuesta = mock(ITipeable.class);
-        try {
-            activa.cancelar(evento, apuesta);
-            verify(evento).cancelarApuesta(apuesta);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        TipeableInterface apuesta = mock(TipeableInterface.class);
+        activa.cancelar(evento, apuesta);
+        verify(evento).cancelarApuesta(apuesta);
+
     }
 
     @Test
     void reactivar() {
-        try {
-            activa.reactivar(mock(Evento.class), mock(ITipeable.class));
-            fail();
-        } catch(Exception e) {
-            //e.printStackTrace();
-        }
+        assertThrows(Exception.class, () -> activa.reactivar(mock(Evento.class), mock(TipeableInterface.class)));
     }
 
     @Test
-    void gananciaAcierto() {
-        try {
-            Evento evento = mock(Evento.class);
-            when(evento.acierto(any(String.class))).thenReturn(true);
-            when(evento.cuota(any(String.class))).thenReturn(BigDecimal.ONE);
-            assertEquals(0, activa.ganancia(evento, "L", BigDecimal.TEN).compareTo(new BigDecimal(8.5)));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void gananciaAcierto() throws Exception {
+
+        Evento evento = mock(Evento.class);
+        when(evento.acierto(any(String.class))).thenReturn(true);
+        when(evento.cuota(any(String.class))).thenReturn(BigDecimal.ONE);
+        assertEquals(0, activa.ganancia(evento, "L", BigDecimal.TEN).compareTo(new BigDecimal(8.5)));
     }
 
     @Test
-    void gananciaNoAcierto() {
-        try {
-            Evento evento = mock(Evento.class);
-            when(evento.acierto(any(String.class))).thenReturn(false);
-            assertEquals(0, activa.ganancia(evento, "L", BigDecimal.TEN).compareTo(new BigDecimal(-10)));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void gananciaNoAcierto() throws Exception {
+        Evento evento = mock(Evento.class);
+        when(evento.acierto(any(String.class))).thenReturn(false);
+        assertEquals(0, activa.ganancia(evento, "L", BigDecimal.TEN).compareTo(new BigDecimal(-10)));
+
     }
 }

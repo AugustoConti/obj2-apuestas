@@ -1,9 +1,9 @@
 package casa.partido.estados;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 
 public interface EstadoPartido {
     boolean terminado();
-    void cancelarApuesta(ITipeable apuesta) throws Exception;
-    void reactivarApuesta(ITipeable apuesta) throws Exception;
+    void cancelarApuesta(TipeableInterface apuesta) throws Exception;
+    void reactivarApuesta(TipeableInterface apuesta) throws Exception;
 }

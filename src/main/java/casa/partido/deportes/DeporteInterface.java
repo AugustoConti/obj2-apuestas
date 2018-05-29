@@ -1,6 +1,6 @@
 package casa.partido.deportes;
 
-public interface IDeporte {
+public interface DeporteInterface {
     String nombre();
     boolean admiteEmpate();
 }

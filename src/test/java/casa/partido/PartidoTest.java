@@ -1,7 +1,7 @@
 package casa.partido;
 
-import casa.ITipeable;
-import casa.partido.deportes.IDeporte;
+import casa.TipeableInterface;
+import casa.partido.deportes.DeporteInterface;
 import casa.partido.estados.EstadoPartido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,21 +15,21 @@ import static org.mockito.Mockito.when;
 
 class PartidoTest {
 
-    private IPartido partido;
-    private IOponente local;
-    private IOponente visitante;
+    private PartidoInterface partido;
+    private OponenteInterface local;
+    private OponenteInterface visitante;
     private EstadoPartido estado;
-    private IDeporte deporte;
+    private DeporteInterface deporte;
 
     @BeforeEach
     void setUp() {
-        local = mock(IOponente.class);
-        visitante = mock(IOponente.class);
+        local = mock(OponenteInterface.class);
+        visitante = mock(OponenteInterface.class);
         estado = mock(EstadoPartido.class);
-        deporte = mock(IDeporte.class);
+        deporte = mock(DeporteInterface.class);
         when(estado.terminado()).thenReturn(true);
         partido = new Partido(deporte, local, visitante,
-                LocalDateTime.of(2018, 5,25,10,0), "Bernal",
+                LocalDateTime.of(2018, 5, 25, 10, 0), "Bernal",
                 "E", estado);
     }
 
@@ -49,34 +49,31 @@ class PartidoTest {
     }
 
     @Test
-    void aciertoTrue() {
+    void aciertoTrue() throws Exception {
         when(deporte.admiteEmpate()).thenReturn(true);
-        try {
-            assertTrue(partido.acierto("E"));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+
+        assertTrue(partido.acierto("E"));
+
     }
 
     @Test
-    void aciertoFalse() {
+    void aciertoFalse() throws Exception {
         when(deporte.admiteEmpate()).thenReturn(true);
-        try {
-            assertFalse(partido.acierto("V"));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        assertFalse(partido.acierto("V"));
+
     }
 
     @Test
-    void aciertoThrow() {
+    void aciertoThrow() throws Exception {
         when(deporte.admiteEmpate()).thenReturn(false);
-        try {
-            assertFalse(partido.acierto("E"));
-            fail();
-        } catch(Exception e) {
-            //e.printStackTrace();
-        }
+        when(deporte.nombre()).thenReturn("Number One");
+        Throwable throwable = assertThrows(Exception.class, () -> partido.acierto("E"));
+
+        assertAll(
+                () -> assertEquals("Number One no admite empate", throwable.getMessage()),
+                () -> assertNull(throwable.getCause())
+        );
+
     }
 
     @Test
@@ -90,24 +87,18 @@ class PartidoTest {
     }
 
     @Test
-    void cancelarApuesta() {
-        try {
-            ITipeable apuesta = mock(ITipeable.class);
-            partido.cancelarApuesta(apuesta);
-            verify(estado).cancelarApuesta(apuesta);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void cancelarApuesta() throws Exception {
+
+        TipeableInterface apuesta = mock(TipeableInterface.class);
+        partido.cancelarApuesta(apuesta);
+        verify(estado).cancelarApuesta(apuesta);
+
     }
 
     @Test
-    void reactivarApuesta() {
-        try {
-            ITipeable apuesta = mock(ITipeable.class);
-            partido.reactivarApuesta(apuesta);
-            verify(estado).reactivarApuesta(apuesta);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void reactivarApuesta() throws Exception {
+        TipeableInterface apuesta = mock(TipeableInterface.class);
+        partido.reactivarApuesta(apuesta);
+        verify(estado).reactivarApuesta(apuesta);
     }
 }

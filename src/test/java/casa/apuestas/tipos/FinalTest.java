@@ -1,6 +1,6 @@
 package casa.apuestas.tipos;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 import casa.apuestas.Evento;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,14 +9,13 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class FinalTest {
 
-    private TipoApuesta fin;
+    private TipoApuestaInterface fin;
 
     @BeforeEach
     void setUp() {
@@ -25,12 +24,12 @@ class FinalTest {
 
     @Test
     void cancelar() {
-        assertThrows(Exception.class, () -> fin.cancelar(mock(Evento.class), mock(ITipeable.class)));
+        assertThrows(Exception.class, () -> fin.cancelar(mock(Evento.class), mock(TipeableInterface.class)));
     }
 
     @Test
     void reactivar() {
-        assertThrows(Exception.class, () -> fin.reactivar(mock(Evento.class), mock(ITipeable.class)));
+        assertThrows(Exception.class, () -> fin.reactivar(mock(Evento.class), mock(TipeableInterface.class)));
     }
 
     @Test

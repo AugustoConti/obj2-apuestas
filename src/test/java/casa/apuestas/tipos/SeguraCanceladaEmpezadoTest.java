@@ -1,6 +1,6 @@
 package casa.apuestas.tipos;
 
-import casa.ITipeable;
+import casa.TipeableInterface;
 import casa.apuestas.Evento;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,11 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 class SeguraCanceladaEmpezadoTest {
 
-    private TipoApuesta canceladaEmpezado;
+    private TipoApuestaInterface canceladaEmpezado;
 
     @BeforeEach
     void setUp() {
@@ -24,32 +23,21 @@ class SeguraCanceladaEmpezadoTest {
 
     @Test
     void cancelar() {
-        try {
-            canceladaEmpezado.cancelar(mock(Evento.class), mock(ITipeable.class));
-            fail();
-        } catch(Exception e) {
-            //e.printStackTrace();
-        }
+        assertThrows(Exception.class, () -> canceladaEmpezado.cancelar(mock(Evento.class), mock(TipeableInterface.class)));
     }
 
     @Test
-    void reactivar() {
+    void reactivar() throws Exception {
         Evento evento = mock(Evento.class);
-        ITipeable apuesta = mock(ITipeable.class);
-        try {
-            canceladaEmpezado.reactivar(evento, apuesta);
-            verify(evento).reactivarApuesta(apuesta);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        TipeableInterface apuesta = mock(TipeableInterface.class);
+
+        canceladaEmpezado.reactivar(evento, apuesta);
+        verify(evento).reactivarApuesta(apuesta);
+
     }
 
     @Test
-    void ganancia() {
-        try {
-            assertEquals(0, canceladaEmpezado.ganancia(mock(Evento.class), "L", BigDecimal.TEN).compareTo(new BigDecimal(3)));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    void ganancia() throws Exception {
+        assertEquals(0, canceladaEmpezado.ganancia(mock(Evento.class), "L", BigDecimal.TEN).compareTo(new BigDecimal(3)));
     }
 }

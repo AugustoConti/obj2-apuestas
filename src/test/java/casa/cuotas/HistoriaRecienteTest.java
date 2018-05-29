@@ -1,9 +1,8 @@
 package casa.cuotas;
 
-import casa.IHistorial;
-import casa.cuotas.HistoriaReciente;
-import casa.partido.IOponente;
-import casa.partido.IPartido;
+import casa.HistorialInterface;
+import casa.partido.OponenteInterface;
+import casa.partido.PartidoInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,18 +17,18 @@ import static org.mockito.Mockito.when;
 class HistoriaRecienteTest {
 
     private HistoriaReciente compe;
-    private IPartido partido;
+    private PartidoInterface partido;
 
     @BeforeEach
     void setUp() {
-        IOponente a = mock(IOponente.class);
-        IOponente b = mock(IOponente.class);
+        OponenteInterface a = mock(OponenteInterface.class);
+        OponenteInterface b = mock(OponenteInterface.class);
 
-        partido = mock(IPartido.class);
+        partido = mock(PartidoInterface.class);
         when(partido.local()).thenReturn(a);
         when(partido.visitante()).thenReturn(b);
 
-        IHistorial historial = mock(IHistorial.class);
+        HistorialInterface historial = mock(HistorialInterface.class);
         when(historial.ultimosNPartidos(a, 10)).thenReturn(Arrays.asList("V", "E", "V", "D", "V", "E", "E", "D", "E", "D"));
         when(historial.ultimosNPartidos(b, 10)).thenReturn(Arrays.asList("V", "E", "V", "V", "V", "D", "V", "V", "E", "V"));
         compe = new HistoriaReciente(historial);

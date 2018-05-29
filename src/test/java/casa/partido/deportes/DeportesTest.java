@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DeportesTest {
 
-    void deporteTest(IDeporte deporte, String nombre, boolean empate){
+    void deporteTest(DeporteInterface deporte, String nombre, boolean empate){
         assertEquals(nombre, deporte.nombre());
         assertEquals(empate, deporte.admiteEmpate());
     }

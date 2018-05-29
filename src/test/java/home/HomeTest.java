@@ -1,4 +1,5 @@
-import casa.IHistorial;
+package home;
+import casa.HistorialInterface;
 import casa.User;
 import casa.balance.BalanceNotifier;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +9,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class HomeTest {
@@ -24,7 +24,7 @@ class HomeTest {
         when(u.getGanancia(1)).thenReturn(BigDecimal.TEN);
         List<User> lista = new ArrayList<>();
         lista.add(u);
-        home = new Home(lista, mock(IHistorial.class), balance);
+        home = new Home(lista, mock(HistorialInterface.class), balance);
     }
 
     @Test

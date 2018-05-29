@@ -22,23 +22,15 @@ class UserTest {
     }
 
     @Test
-    void getGanancia() {
+    void getGanancia() throws Exception {
         Apuesta ap1 = mock(Apuesta.class);
         when(ap1.inMonth(any(Integer.class))).thenReturn(true);
-        try {
-            when(ap1.gananciaBruta()).thenReturn(BigDecimal.TEN);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        when(ap1.gananciaBruta()).thenReturn(BigDecimal.TEN);
         user.addApuesta(ap1);
 
         Apuesta ap2 = mock(Apuesta.class);
         when(ap2.inMonth(any(Integer.class))).thenReturn(true);
-        try {
-            when(ap2.gananciaBruta()).thenThrow(Exception.class);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        when(ap2.gananciaBruta()).thenThrow(Exception.class);
         user.addApuesta(ap2);
 
         assertEquals(0, user.getGanancia(1).compareTo(BigDecimal.TEN));
