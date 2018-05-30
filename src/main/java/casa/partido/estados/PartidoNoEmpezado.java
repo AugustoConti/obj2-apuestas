@@ -4,7 +4,7 @@ import casa.TipeableInterface;
 import casa.apuestas.tipos.SeguraActiva;
 import casa.apuestas.tipos.SeguraCanceladaNoEmpezado;
 
-public class NoEmpezado implements EstadoPartido {
+public class PartidoNoEmpezado implements EstadoPartido {
     @Override
     public boolean terminado() {
         return false;

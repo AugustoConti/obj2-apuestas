@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-class TerminadoTest {
+class PartidoTerminadoTest {
 
     private EstadoPartido terminado;
 
     @BeforeEach
     void setUp() {
-        terminado = new Terminado();
+        terminado = new PartidoTerminado();
     }
 
     @Test

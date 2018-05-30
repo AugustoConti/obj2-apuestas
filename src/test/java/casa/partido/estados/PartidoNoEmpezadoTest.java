@@ -11,13 +11,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-class NoEmpezadoTest {
+class PartidoNoEmpezadoTest {
 
     private EstadoPartido noEmpezado;
 
     @BeforeEach
     void setUp() {
-        noEmpezado = new NoEmpezado();
+        noEmpezado = new PartidoNoEmpezado();
     }
 
     @Test

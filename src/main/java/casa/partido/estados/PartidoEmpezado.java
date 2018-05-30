@@ -3,7 +3,7 @@ package casa.partido.estados;
 import casa.TipeableInterface;
 import casa.apuestas.tipos.SeguraCanceladaEmpezado;
 
-public class Empezado implements EstadoPartido {
+public class PartidoEmpezado implements EstadoPartido {
     @Override
     public boolean terminado() {
         return false;

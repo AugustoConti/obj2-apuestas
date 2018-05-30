@@ -2,7 +2,7 @@ package casa.partido.estados;
 
 import casa.TipeableInterface;
 
-public class Terminado implements EstadoPartido {
+public class PartidoTerminado implements EstadoPartido {
     @Override
     public boolean terminado() {
         return true;
