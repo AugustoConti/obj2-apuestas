@@ -83,4 +83,10 @@ class PartidoTest {
         partido.reactivarApuesta(apuesta);
         verify(estado).reactivarApuesta(apuesta);
     }
+
+    @Test
+    void nextState(){
+        partido.nextState();
+        verify(estado).nextState(partido);
+    }
 }

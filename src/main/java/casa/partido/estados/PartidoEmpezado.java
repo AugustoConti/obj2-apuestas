@@ -2,11 +2,17 @@ package casa.partido.estados;
 
 import casa.TipeableInterface;
 import casa.apuestas.tipos.SeguraCanceladaEmpezado;
+import casa.partido.PartidoInterface;
 
 public class PartidoEmpezado implements EstadoPartido {
     @Override
     public boolean terminado() {
         return false;
+    }
+
+    @Override
+    public void nextState(PartidoInterface partido) {
+        partido.setState(new PartidoTerminado());
     }
 
     @Override

@@ -3,6 +3,7 @@ package casa.partido;
 import casa.TipeableInterface;
 import casa.partido.deportes.DeporteInterface;
 import casa.partido.estados.EstadoPartido;
+import casa.partido.estados.PartidoNoEmpezado;
 
 import java.time.LocalDateTime;
 
@@ -59,5 +60,15 @@ public class Partido implements PartidoInterface {
     @Override
     public void reactivarApuesta(TipeableInterface apuesta) throws Exception {
         estado.reactivarApuesta(apuesta);
+    }
+
+    @Override
+    public void nextState() {
+        estado.nextState(this);
+    }
+
+    @Override
+    public void setState(EstadoPartido estado) {
+        this.estado = estado;
     }
 }
