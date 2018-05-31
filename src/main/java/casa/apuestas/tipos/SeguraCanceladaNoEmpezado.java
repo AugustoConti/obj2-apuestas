@@ -2,6 +2,7 @@ package casa.apuestas.tipos;
 
 import casa.TipeableInterface;
 import casa.apuestas.Evento;
+import casa.partido.Ganador;
 
 import java.math.BigDecimal;
 
@@ -17,7 +18,7 @@ public class SeguraCanceladaNoEmpezado implements TipoApuestaInterface {
     }
 
     @Override
-    public BigDecimal ganancia(Evento evento, String favorito, BigDecimal monto) {
+    public BigDecimal ganancia(Evento evento, Ganador favorito, BigDecimal monto) {
         return new BigDecimal(-200);
     }
 }

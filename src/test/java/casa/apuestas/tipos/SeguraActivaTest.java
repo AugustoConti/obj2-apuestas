@@ -2,6 +2,7 @@ package casa.apuestas.tipos;
 
 import casa.TipeableInterface;
 import casa.apuestas.Evento;
+import casa.partido.Ganador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,19 +37,19 @@ class SeguraActivaTest {
     }
 
     @Test
-    void gananciaAcierto() throws Exception {
+    void gananciaAcierto() {
 
         Evento evento = mock(Evento.class);
-        when(evento.acierto(any(String.class))).thenReturn(true);
-        when(evento.cuota(any(String.class))).thenReturn(BigDecimal.ONE);
-        assertEquals(0, activa.ganancia(evento, "L", BigDecimal.TEN).compareTo(new BigDecimal(8.5)));
+        when(evento.acierto(any(Ganador.class))).thenReturn(true);
+        when(evento.cuota(any(Ganador.class))).thenReturn(BigDecimal.ONE);
+        assertEquals(0, activa.ganancia(evento, Ganador.VISITANTE, BigDecimal.TEN).compareTo(new BigDecimal(8.5)));
     }
 
     @Test
-    void gananciaNoAcierto() throws Exception {
+    void gananciaNoAcierto() {
         Evento evento = mock(Evento.class);
-        when(evento.acierto(any(String.class))).thenReturn(false);
-        assertEquals(0, activa.ganancia(evento, "L", BigDecimal.TEN).compareTo(new BigDecimal(-10)));
+        when(evento.acierto(any(Ganador.class))).thenReturn(false);
+        assertEquals(0, activa.ganancia(evento, Ganador.VISITANTE, BigDecimal.TEN).compareTo(new BigDecimal(-10)));
 
     }
 }

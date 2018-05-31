@@ -3,6 +3,7 @@ import casa.HistorialInterface;
 import casa.User;
 import casa.balance.BalanceNotifier;
 
+import java.time.Month;
 import java.util.List;
 
 public class Home {
@@ -18,7 +19,7 @@ public class Home {
 
     public void notifyBalance(Integer month){
         for(User u : usuarios){
-            balanceNotifier.notifyBalance(u, month, u.getGanancia(month));
+            balanceNotifier.notifyBalance(u, month, u.getGanancia(Month.of(month)));
         }
     }
 }

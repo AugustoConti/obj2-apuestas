@@ -2,9 +2,11 @@ package casa.apuestas;
 
 import casa.TipeableInterface;
 import casa.cuotas.AlgortimoInterface;
+import casa.partido.Ganador;
 import casa.partido.PartidoInterface;
 
 import java.math.BigDecimal;
+import java.time.Month;
 
 public class Evento {
 
@@ -20,7 +22,7 @@ public class Evento {
         cuotaVisitante = algoritmo.visitante(partido);
     }
 
-    public boolean inMonth(Integer month) {
+    public boolean inMonth(Month month) {
         return partido.inMonth(month);
     }
 
@@ -36,16 +38,25 @@ public class Evento {
         return partido.terminado();
     }
 
-    public boolean acierto(String favorito) {
+    public boolean acierto(Ganador favorito) {
         return partido.acierto(favorito);
     }
 
-    public BigDecimal cuota(String favorito) {
-        switch (favorito){
-            case "L": return cuotaLocal;
-            case "E": return cuotaEmpate;
-            case "V": return cuotaVisitante;
-            default: return BigDecimal.ZERO;
+    public BigDecimal cuota(Ganador favorito) {
+
+        BigDecimal cuota = null;
+        switch (favorito) {
+            case LOCAL:
+                cuota = cuotaLocal;
+                break;
+            case NINGUNO:
+                cuota = cuotaEmpate;
+                break;
+            case VISITANTE:
+                cuota = cuotaVisitante;
+                break;
         }
+
+        return cuota;
     }
 }

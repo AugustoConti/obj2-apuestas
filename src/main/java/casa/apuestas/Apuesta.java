@@ -2,16 +2,18 @@ package casa.apuestas;
 
 import casa.TipeableInterface;
 import casa.apuestas.tipos.TipoApuestaInterface;
+import casa.partido.Ganador;
 
 import java.math.BigDecimal;
+import java.time.Month;
 
 public class Apuesta implements TipeableInterface {
     private BigDecimal monto;
-    private String favorito;
+    private Ganador favorito;
     private Evento evento;
     private TipoApuestaInterface tipo;
 
-    public Apuesta(BigDecimal monto, String favorito, Evento evento, TipoApuestaInterface tipo) {
+    public Apuesta(BigDecimal monto, Ganador favorito, Evento evento, TipoApuestaInterface tipo) {
         this.monto = monto;
         this.favorito = favorito;
         this.evento = evento;
@@ -30,18 +32,18 @@ public class Apuesta implements TipeableInterface {
         tipo.reactivar(evento, this);
     }
 
-    public BigDecimal gananciaBruta() throws Exception {
+    public BigDecimal gananciaBruta() {
         return gananciaNeta().add(monto);
     }
 
-    public BigDecimal gananciaNeta() throws Exception {
+    public BigDecimal gananciaNeta() {
         if (!evento.terminado()) {
-            throw new Exception("El evento no ha terminado");
+            return BigDecimal.ZERO;
         }
         return tipo.ganancia(evento, favorito, monto);
     }
 
-    public boolean inMonth(Integer month) {
+    public boolean inMonth(Month month) {
         return evento.inMonth(month);
     }
 }

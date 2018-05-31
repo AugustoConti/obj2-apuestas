@@ -2,6 +2,7 @@ package casa.apuestas.tipos;
 
 import casa.TipeableInterface;
 import casa.apuestas.Evento;
+import casa.partido.Ganador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +39,6 @@ class SeguraCanceladaEmpezadoTest {
 
     @Test
     void ganancia() throws Exception {
-        assertEquals(0, canceladaEmpezado.ganancia(mock(Evento.class), "L", BigDecimal.TEN).compareTo(new BigDecimal(3)));
+        assertEquals(0, canceladaEmpezado.ganancia(mock(Evento.class), Ganador.VISITANTE, BigDecimal.TEN).compareTo(new BigDecimal(3)));
     }
 }

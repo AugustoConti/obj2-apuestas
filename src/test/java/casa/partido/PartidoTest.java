@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -30,7 +31,7 @@ class PartidoTest {
         when(estado.terminado()).thenReturn(true);
         partido = new Partido(deporte, local, visitante,
                 LocalDateTime.of(2018, 5, 25, 10, 0), "Bernal",
-                "E", estado);
+                Ganador.NINGUNO, estado);
     }
 
     @Test
@@ -51,23 +52,23 @@ class PartidoTest {
     @Test
     void aciertoTrue() throws Exception {
         when(deporte.admiteEmpate()).thenReturn(true);
-        assertTrue(partido.acierto("E"));
+        assertTrue(partido.acierto(Ganador.NINGUNO));
     }
 
     @Test
     void aciertoFalse() throws Exception {
         when(deporte.admiteEmpate()).thenReturn(true);
-        assertFalse(partido.acierto("V"));
+        assertFalse(partido.acierto(Ganador.VISITANTE));
     }
 
     @Test
     void inMonthTrue() {
-        assertTrue(partido.inMonth(5));
+        assertTrue(partido.inMonth(Month.MAY));
     }
 
     @Test
     void inMonthFalse() {
-        assertFalse(partido.inMonth(1));
+        assertFalse(partido.inMonth(Month.JANUARY));
     }
 
     @Test

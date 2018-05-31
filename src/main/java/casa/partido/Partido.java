@@ -3,9 +3,9 @@ package casa.partido;
 import casa.TipeableInterface;
 import casa.partido.deportes.DeporteInterface;
 import casa.partido.estados.EstadoPartido;
-import casa.partido.estados.PartidoNoEmpezado;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 
 public class Partido implements PartidoInterface {
     private DeporteInterface deporte;
@@ -13,17 +13,17 @@ public class Partido implements PartidoInterface {
     private OponenteInterface visitante;
     private LocalDateTime comienzo;
     private String lugar;
-    private String resultado;
+    private Ganador ganador;
     private EstadoPartido estado;
 
     public Partido(DeporteInterface deporte, OponenteInterface local, OponenteInterface visitante,
-                   LocalDateTime comienzo, String lugar, String resultado, EstadoPartido estado) {
+                   LocalDateTime comienzo, String lugar, Ganador ganador, EstadoPartido estado) {
         this.deporte = deporte;
         this.local = local;
         this.visitante = visitante;
         this.comienzo = comienzo;
         this.lugar = lugar;
-        this.resultado = resultado;
+        this.ganador = ganador;
         this.estado = estado;
     }
 
@@ -43,13 +43,13 @@ public class Partido implements PartidoInterface {
     }
 
     @Override
-    public boolean acierto(String favorito) {
-        return resultado.equals(favorito);
+    public boolean acierto(Ganador favorito) {
+        return ganador == favorito;
     }
 
     @Override
-    public boolean inMonth(Integer month) {
-        return comienzo.getMonth().getValue() == month;
+    public boolean inMonth(Month month) {
+        return comienzo.getMonth() == month;
     }
 
     @Override

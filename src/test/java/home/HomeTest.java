@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ class HomeTest {
     void setUp() {
         balance = mock(BalanceNotifier.class);
         u = mock(User.class);
-        when(u.getGanancia(1)).thenReturn(BigDecimal.TEN);
+        when(u.getGanancia(Month.JANUARY)).thenReturn(BigDecimal.TEN);
         List<User> lista = new ArrayList<>();
         lista.add(u);
         home = new Home(lista, mock(HistorialInterface.class), balance);
