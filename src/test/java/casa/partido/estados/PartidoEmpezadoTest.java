@@ -42,6 +42,5 @@ class PartidoEmpezadoTest {
         PartidoInterface partido = mock(PartidoInterface.class);
         empezado.nextState(partido);
         verify(partido).setState(any(PartidoTerminado.class));
-
     }
 }
