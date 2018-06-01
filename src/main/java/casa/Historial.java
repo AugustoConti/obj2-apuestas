@@ -4,16 +4,28 @@ import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Historial implements HistorialInterface {
 
-    private List<Partido> historialDePartidos = null;
+    private List<Partido> historialDePartidos;
+
+    public Historial(List<Partido> historialDePartidos) {this.historialDePartidos = historialDePartidos;}
 
     public void addPartido(Partido partido) {
         historialDePartidos.add(partido);
+    }
+
+    private List<Partido> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
+        return historialDePartidos.stream().filter(
+                p -> p.local() == local && p.visitante() == visitante).collect(Collectors.toList());
+
+    }
+
+    private List<Partido> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador ganador) {
+        return enfrentamientosEntre(local, visitante).stream().filter(
+                p -> p.acierto(ganador)).collect(Collectors.toList());
     }
 
     @Override
@@ -34,23 +46,18 @@ public class Historial implements HistorialInterface {
     }
 
     @Override
-    public List<String> ultimosNPartidos(OponenteInterface a, int n) {
-        List<Partido> nPartidos = historialDePartidos.stream().filter(
-                p -> p.local() == a || p.visitante() == a).collect(Collectors.toList());
-        // TODO arreglar esto
-        return new ArrayList<>();
+    public int cantVictoriasEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
+        return 0;
     }
 
-
-    private List<Partido> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
-        return historialDePartidos.stream().filter(
-                p -> p.local() == local && p.visitante() == visitante).collect(Collectors.toList());
-
+    @Override
+    public int cantUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
+        return 0;
     }
 
-    private List<Partido> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador ganador) {
-        return enfrentamientosEntre(local, visitante).stream().filter(
-                p -> p.acierto(ganador)).collect(Collectors.toList());
+    @Override
+    public int cantEmpatesEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
+        return 0;
     }
 
 }
