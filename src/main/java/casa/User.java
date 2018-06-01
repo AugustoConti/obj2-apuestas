@@ -19,7 +19,7 @@ public class User {
     }
 
     /**
-     * Recibe una apuesta. Agreda la apuesta a la lista de apuestas
+     * Recibe una apuesta. Agrega la apuesta a la lista de apuestas
      */
     public void addApuesta(Apuesta apuesta) {
         apuestas.add(apuesta);
@@ -29,7 +29,7 @@ public class User {
      * Recibe un mes. Retorna la suma de las ganancias de cada apuesta del mes
      */
     public BigDecimal getGanancia(Month month) {
-        BigDecimal ganancia = new BigDecimal(0);
+        BigDecimal ganancia = BigDecimal.ZERO;
         for(Apuesta a : apuestas) {
             if(a.inMonth(month)) {
                 ganancia = ganancia.add(a.gananciaBruta());
