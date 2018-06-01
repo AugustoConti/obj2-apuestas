@@ -10,26 +10,22 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class PartidoTest {
 
-    private PartidoInterface partido;
+    private Partido partido;
     private OponenteInterface local;
     private OponenteInterface visitante;
     private EstadoPartido estado;
-    private DeporteInterface deporte;
 
     @BeforeEach
     void setUp() {
         local = mock(OponenteInterface.class);
         visitante = mock(OponenteInterface.class);
         estado = mock(EstadoPartido.class);
-        deporte = mock(DeporteInterface.class);
         when(estado.terminado()).thenReturn(true);
-        partido = new Partido(deporte, local, visitante,
+        partido = new Partido(mock(DeporteInterface.class), local, visitante,
                 LocalDateTime.of(2018, 5, 25, 10, 0), "Bernal",
                 Ganador.NINGUNO, estado);
     }
@@ -50,14 +46,12 @@ class PartidoTest {
     }
 
     @Test
-    void aciertoTrue() throws Exception {
-        when(deporte.admiteEmpate()).thenReturn(true);
+    void aciertoTrue() {
         assertTrue(partido.acierto(Ganador.NINGUNO));
     }
 
     @Test
-    void aciertoFalse() throws Exception {
-        when(deporte.admiteEmpate()).thenReturn(true);
+    void aciertoFalse() {
         assertFalse(partido.acierto(Ganador.VISITANTE));
     }
 
@@ -86,7 +80,7 @@ class PartidoTest {
     }
 
     @Test
-    void nextState(){
+    void nextState() {
         partido.nextState();
         verify(estado).nextState(partido);
     }

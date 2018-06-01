@@ -10,11 +10,10 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class EventoTest {
 
@@ -40,17 +39,16 @@ class EventoTest {
     }
 
     @Test
-    void cancelarApuesta() throws Exception{
-            evento.cancelarApuesta(mock(TipeableInterface.class));
-            verify(partido).cancelarApuesta(any(TipeableInterface.class));
+    void cancelarApuesta() throws Exception {
+        evento.cancelarApuesta(mock(TipeableInterface.class));
+        verify(partido).cancelarApuesta(any(TipeableInterface.class));
 
     }
 
     @Test
-    void reactivarApuesta() throws Exception{
-
-            evento.reactivarApuesta(mock(TipeableInterface.class));
-            verify(partido).reactivarApuesta(any(TipeableInterface.class));
+    void reactivarApuesta() throws Exception {
+        evento.reactivarApuesta(mock(TipeableInterface.class));
+        verify(partido).reactivarApuesta(any(TipeableInterface.class));
     }
 
     @Test
@@ -60,9 +58,9 @@ class EventoTest {
     }
 
     @Test
-    void acierto() throws Exception {
-            when(partido.acierto(Ganador.VISITANTE)).thenReturn(true);
-            assertTrue(evento.acierto(Ganador.VISITANTE));
+    void acierto() {
+        when(partido.acierto(Ganador.VISITANTE)).thenReturn(true);
+        assertTrue(evento.acierto(Ganador.VISITANTE));
     }
 
     @Test

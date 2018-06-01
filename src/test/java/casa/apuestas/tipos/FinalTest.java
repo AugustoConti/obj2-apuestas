@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class FinalTest {
 
-    private TipoApuestaInterface fin;
+    private Final fin;
 
     @BeforeEach
     void setUp() {
@@ -34,7 +34,7 @@ class FinalTest {
     }
 
     @Test
-    void gananciaAcierto() throws Exception {
+    void gananciaAcierto() {
         Evento evento = mock(Evento.class);
         when(evento.acierto(any(Ganador.class))).thenReturn(true);
         when(evento.cuota(any(Ganador.class))).thenReturn(BigDecimal.ONE);
@@ -42,7 +42,7 @@ class FinalTest {
     }
 
     @Test
-    void gananciaNoAcierto() throws Exception {
+    void gananciaNoAcierto() {
         Evento evento = mock(Evento.class);
         when(evento.acierto(any(Ganador.class))).thenReturn(false);
         assertEquals(0, fin.ganancia(evento, Ganador.VISITANTE, BigDecimal.TEN).compareTo(new BigDecimal(-10)));

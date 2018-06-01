@@ -1,17 +1,14 @@
 package casa;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 
 import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 public class Historial implements HistorialInterface {
-
 
     private List<Partido> historialDePartidos = null;
 
@@ -33,8 +30,7 @@ public class Historial implements HistorialInterface {
 
     @Override
     public int cantidadEnfrentamientos(OponenteInterface a, OponenteInterface b) {
-        return enfrentamientosEntre(a, b).size() + enfrentamientosEntre(b, a).size()
-                ;
+        return enfrentamientosEntre(a, b).size() + enfrentamientosEntre(b, a).size();
     }
 
     @Override

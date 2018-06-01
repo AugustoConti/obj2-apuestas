@@ -1,9 +1,13 @@
 package casa.partido.deportes;
 
-/* Interfade Deporte */
+import casa.partido.Ganador;
+
+import java.util.List;
+
 public interface DeporteInterface {
-    /*Define el nombre del deporte*/
+
     String nombre();
-    /*Define si admite empate */
-    boolean admiteEmpate();
+
+    List<Ganador> resultadosPosibles();
+
 }

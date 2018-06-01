@@ -8,10 +8,9 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 class ApuestaTest {
 
@@ -32,7 +31,7 @@ class ApuestaTest {
     }
 
     @Test
-    void cancelar()  throws Exception{
+    void cancelar() throws Exception {
         apuesta.cancelar();
         verify(tipo).cancelar(evento, apuesta);
     }
@@ -44,14 +43,14 @@ class ApuestaTest {
     }
 
     @Test
-    void gananciaBruta()  {
+    void gananciaBruta() {
         when(evento.terminado()).thenReturn(true);
         when(tipo.ganancia(evento, Ganador.VISITANTE, BigDecimal.TEN)).thenReturn(BigDecimal.ONE);
         assertEquals(0, apuesta.gananciaBruta().compareTo(new BigDecimal(11)));
     }
 
     @Test
-    void gananciaNeta()  {
+    void gananciaNeta() {
         when(evento.terminado()).thenReturn(true);
         when(tipo.ganancia(evento, Ganador.VISITANTE, BigDecimal.TEN)).thenReturn(BigDecimal.ONE);
         assertEquals(0, apuesta.gananciaNeta().compareTo(BigDecimal.ONE));

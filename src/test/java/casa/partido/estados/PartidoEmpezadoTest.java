@@ -1,19 +1,20 @@
 package casa.partido.estados;
 
 import casa.TipeableInterface;
-import casa.apuestas.tipos.SeguraCanceladaEmpezado;
+import casa.apuestas.tipos.SeguraCancelada;
 import casa.partido.PartidoInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 class PartidoEmpezadoTest {
 
-    private EstadoPartido empezado;
+    private PartidoEmpezado empezado;
 
     @BeforeEach
     void setUp() {
@@ -26,10 +27,10 @@ class PartidoEmpezadoTest {
     }
 
     @Test
-    void cancelarApuesta() throws Exception {
+    void cancelarApuesta() {
         TipeableInterface apuesta = mock(TipeableInterface.class);
         empezado.cancelarApuesta(apuesta);
-        verify(apuesta).setTipo(any(SeguraCanceladaEmpezado.class));
+        verify(apuesta).setTipo(any(SeguraCancelada.class));
     }
 
     @Test
@@ -38,7 +39,7 @@ class PartidoEmpezadoTest {
     }
 
     @Test
-    void nextState(){
+    void nextState() {
         PartidoInterface partido = mock(PartidoInterface.class);
         empezado.nextState(partido);
         verify(partido).setState(any(PartidoTerminado.class));

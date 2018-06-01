@@ -1,38 +1,32 @@
 package casa.partido.deportes;
 
+import casa.partido.Ganador;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DeportesTest {
 
-    void deporteTest(DeporteInterface deporte, String nombre, boolean empate){
-        assertEquals(nombre, deporte.nombre());
-        assertEquals(empate, deporte.admiteEmpate());
+    private Deporte deporte;
+
+    @BeforeEach
+    void setUp() {
+        List<Ganador> resultados = new ArrayList<>();
+        deporte = new Deporte("Boxeo", resultados);
     }
 
     @Test
-    void basquetball() {
-        deporteTest(new Basquetball(), "Basquetball", false);
+    void nombre() {
+        assertEquals("Boxeo", deporte.nombre());
     }
 
     @Test
-    void boxeo() {
-        deporteTest(new Boxeo(), "Boxeo", true);
+    void resultador() {
+        assertEquals(new ArrayList<>(), deporte.resultadosPosibles());
     }
 
-    @Test
-    void futbol() {
-        deporteTest(new Futbol(), "Futbol", true);
-    }
-
-    @Test
-    void tenis() {
-        deporteTest(new Tenis(), "Tenis", false);
-    }
-
-    @Test
-    void voley() {
-        deporteTest(new Voley(), "Voley", false);
-    }
 }
