@@ -19,9 +19,9 @@ public class HistoriaReciente implements AlgortimoInterface {
     private BigDecimal probabilidadDe(OponenteInterface a, String v) {
 
         /* Define la cantidad de partidos que se va a usar en el historial*/
-        Integer ultimosNPartidos = 10;
+        Integer cantUltimosNPartidos = 10;
 
-        List<String> historia = historial.ultimosNPartidos(a, ultimosNPartidos);
+        List<String> historia = historial.ultimosNPartidos(a, cantUltimosNPartidos);
         return new BigDecimal(historia.stream().filter(r -> r.equals(v)).count())
                 .divide(new BigDecimal(historia.size()), 2, RoundingMode.HALF_DOWN);
     }

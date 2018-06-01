@@ -3,6 +3,7 @@ package casa.partido;
 import casa.TipeableInterface;
 import casa.partido.deportes.DeporteInterface;
 import casa.partido.estados.EstadoPartido;
+import casa.Historial;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -45,7 +46,7 @@ public class Partido implements PartidoInterface {
         return estado.terminado();
     }
 
-    /* Recibe un equipo favorito . Retorna true si el ganador del partido es igual a favorito*/
+    /* Recibe un  favorito . Retorna true si el ganador del partido es igual a favorito*/
     @Override
     public boolean acierto(Ganador favorito) {
         return ganador == favorito;
@@ -79,5 +80,9 @@ public class Partido implements PartidoInterface {
     @Override
     public void setState(EstadoPartido estado) {
         this.estado = estado;
+    }
+
+    public Ganador getGanador() {
+        return ganador;
     }
 }

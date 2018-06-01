@@ -1,13 +1,15 @@
 package casa;
 
 import casa.partido.OponenteInterface;
+import casa.partido.Partido;
 
 import java.util.List;
 
 public interface HistorialInterface {
-    int victoriasDe(OponenteInterface a, OponenteInterface b);
 
-    int empatesEntre(OponenteInterface a, OponenteInterface b);
+    int cantVictoriasDe(OponenteInterface a, OponenteInterface b);
+
+    int cantEmpatesEntre(OponenteInterface a, OponenteInterface b);
 
     int cantidadEnfrentamientos(OponenteInterface a, OponenteInterface b);
 
