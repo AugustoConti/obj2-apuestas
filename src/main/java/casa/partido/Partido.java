@@ -84,7 +84,7 @@ public class Partido implements PartidoInterface {
     }
 
     /**
-     * cambia el estado del partido al siguiente estado que le corresponde
+     * Cambia el estado del partido al siguiente estado que le corresponde
      */
     @Override
     public void nextState() {
@@ -99,6 +99,9 @@ public class Partido implements PartidoInterface {
         this.estado = estado;
     }
 
+    /**
+     * Obtiene el ganador del partido
+     */
     @Override
     public Ganador ganador() {
         return this.ganador;
