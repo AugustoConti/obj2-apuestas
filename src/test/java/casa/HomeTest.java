@@ -1,7 +1,5 @@
-package home;
+package casa;
 
-import casa.HistorialInterface;
-import casa.User;
 import casa.balance.BalanceNotifier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

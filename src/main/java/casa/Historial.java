@@ -43,16 +43,14 @@ public class Historial implements HistorialInterface {
 
 
     private List<Partido> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
-        List<Partido> enfrentamientos = historialDePartidos.stream().filter(
+        return historialDePartidos.stream().filter(
                 p -> p.local() == local && p.visitante() == visitante).collect(Collectors.toList());
-        return enfrentamientos;
 
     }
 
     private List<Partido> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador ganador) {
-        List<Partido> victoriasDe = enfrentamientosEntre(local, visitante).stream().filter(
+        return enfrentamientosEntre(local, visitante).stream().filter(
                 p -> p.acierto(ganador)).collect(Collectors.toList());
-        return victoriasDe;
     }
 
 }
