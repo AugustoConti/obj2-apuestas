@@ -15,7 +15,7 @@ public class Historial implements HistorialInterface {
     public Historial(List<PartidoInterface> historialDePartidos) {this.historialDePartidos = historialDePartidos;}
 
     private List<PartidoInterface> partidosTerminados() {
-        return historialDePartidos.stream().filter(p -> p.terminado()).collect(Collectors.toList());
+        return historialDePartidos.stream().filter(PartidoInterface::terminado).collect(Collectors.toList());
     }
 
     private List<PartidoInterface> enfrentamientosEntre(OponenteInterface l, OponenteInterface v) {
