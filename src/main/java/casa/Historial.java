@@ -4,6 +4,7 @@ import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.PartidoInterface;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +14,12 @@ public class Historial implements HistorialInterface {
 
     public Historial(List<PartidoInterface> historialDePartidos) {this.historialDePartidos = historialDePartidos;}
 
+    private List<PartidoInterface> partidosTerminados() {
+        return historialDePartidos.stream().filter(p -> p.terminado()).collect(Collectors.toList());
+    }
+
     private List<PartidoInterface> enfrentamientosEntre(OponenteInterface l, OponenteInterface v) {
-        return historialDePartidos.stream().filter(p -> p.local() == l && p.visitante() == v).collect(Collectors.toList());
+        return partidosTerminados().stream().filter(p -> p.local() == l && p.visitante() == v).collect(Collectors.toList());
     }
 
     private List<PartidoInterface> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador g) {
@@ -38,22 +43,31 @@ public class Historial implements HistorialInterface {
         return enfrentamientosEntre(a, b).size() + enfrentamientosEntre(b, a).size();
     }
 
+    private List<PartidoInterface> ultimosNPartidoDe(OponenteInterface oponente, Integer cantidad){
+        return partidosTerminados().stream().filter(p -> p.local() == oponente || p.visitante() == oponente)
+                .sorted(Comparator.comparing(PartidoInterface::fecha).reversed())
+                .limit(cantidad)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public Integer cantVictoriasEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
-        // TODO Falta implementar cantVictoriasEnUltimosNPartidos
-        return 2;
+        return ultimosNPartidoDe(oponente, cantUltimosNPartidos).stream()
+                .filter(p -> (p.local() == oponente && p.acierto(Ganador.LOCAL))
+                             || (p.visitante() == oponente && p.acierto(Ganador.VISITANTE)))
+                .collect(Collectors.toList()).size();
     }
 
     @Override
     public Integer cantUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
-        // TODO Falta implementar cantUltimosNPartidos
-        return 4;
+        return ultimosNPartidoDe(oponente, cantUltimosNPartidos).size();
     }
 
     @Override
     public Integer cantEmpatesEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
-        // TODO Falta implementar cantEmpatesEnUltimosNPartidos
-        return 1;
+        return ultimosNPartidoDe(oponente, cantUltimosNPartidos).stream()
+                .filter(p -> p.acierto(Ganador.NINGUNO))
+                .collect(Collectors.toList()).size();
     }
 
 }

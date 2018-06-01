@@ -3,6 +3,8 @@ package casa.partido;
 import casa.TipeableInterface;
 import casa.partido.estados.EstadoPartido;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 
 public interface PartidoInterface {
@@ -26,5 +28,7 @@ public interface PartidoInterface {
     void setState(EstadoPartido estado);
 
     Ganador ganador();
+
+    LocalDateTime fecha();
 
 }

@@ -6,6 +6,7 @@ import casa.partido.PartidoInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +22,8 @@ class HistorialTest {
 
     PartidoInterface newPartido(OponenteInterface local, OponenteInterface visitante, Ganador g){
         PartidoInterface p = mock(PartidoInterface.class);
+        when(p.terminado()).thenReturn(true);
+        when(p.fecha()).thenReturn(LocalDateTime.now());
         when(p.local()).thenReturn(local);
         when(p.visitante()).thenReturn(visitante);
         when(p.acierto(g)).thenReturn(true);

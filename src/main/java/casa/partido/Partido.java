@@ -107,4 +107,9 @@ public class Partido implements PartidoInterface {
         return this.ganador;
     }
 
+    @Override
+    public LocalDateTime fecha() {
+        return comienzo;
+    }
+
 }
