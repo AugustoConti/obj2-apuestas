@@ -32,6 +32,7 @@ class HistoriaRecienteTest {
         when(historial.cantVictoriasEnUltimosNPartidos(b, 10)).thenReturn(7);
         when(historial.cantEmpatesEnUltimosNPartidos(a, 10)).thenReturn(3);
         when(historial.cantEmpatesEnUltimosNPartidos(b, 10)).thenReturn(3);
+        when(historial.cantUltimosNPartidos(a, 10)).thenReturn(10);
         when(historial.cantUltimosNPartidos(b, 10)).thenReturn(10);
 
         compe = new HistoriaReciente(historial);
