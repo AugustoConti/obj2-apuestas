@@ -1,7 +1,7 @@
 package casa.apuestas;
 
 import casa.TipeableInterface;
-import casa.cuotas.AlgortimoInterface;
+import casa.cuotas.CuotaInterface;
 import casa.partido.Ganador;
 import casa.partido.PartidoInterface;
 
@@ -18,12 +18,12 @@ public class Evento {
     /**
      * Constructor. Crea un evento. Recibe un partido, y un algoritmo para definir la ganancia
      */
-    public Evento(PartidoInterface partido, AlgortimoInterface algoritmo) {
+    public Evento(PartidoInterface partido, CuotaInterface cuota) {
         this.partido = partido;
         // calcula las coutas segun el algoritmo entregado //
-        cuotaLocal = algoritmo.local(partido);
-        cuotaEmpate = algoritmo.empate(partido);
-        cuotaVisitante = algoritmo.visitante(partido);
+        cuotaLocal = cuota.local(partido);
+        cuotaEmpate = cuota.empate(partido);
+        cuotaVisitante = cuota.visitante(partido);
     }
 
     /**

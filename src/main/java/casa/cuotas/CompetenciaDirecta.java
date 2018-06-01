@@ -7,7 +7,7 @@ import casa.partido.PartidoInterface;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class CompetenciaDirecta implements AlgortimoInterface {
+public class CompetenciaDirecta implements CuotaInterface {
 
     private HistorialInterface historial;
 

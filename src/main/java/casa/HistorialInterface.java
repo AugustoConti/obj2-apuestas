@@ -6,8 +6,6 @@ import casa.partido.PartidoInterface;
 
 public interface HistorialInterface {
 
-    void addPartido(PartidoInterface partido);
-
     int cantVictoriasDe(OponenteInterface a, OponenteInterface b);
 
     int cantEmpatesEntre(OponenteInterface a, OponenteInterface b);

@@ -34,6 +34,6 @@ public class SeguraCancelada implements TipoApuestaInterface {
      */
     @Override
     public BigDecimal ganancia(Evento evento, Ganador favorito, BigDecimal monto) {
-        return tipoCancelada.ganancia(evento, favorito, monto);
+        return tipoCancelada.ganancia(monto);
     }
 }

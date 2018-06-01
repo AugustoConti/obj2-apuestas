@@ -99,7 +99,9 @@ public class Partido implements PartidoInterface {
         this.estado = estado;
     }
 
-    public Ganador getGanador() {
-        return ganador;
+    @Override
+    public Ganador ganador() {
+        return this.ganador;
     }
+
 }

@@ -20,7 +20,7 @@ class SeguraCanceladaTest {
     @BeforeEach
     void setUp() {
         CanceladaInterface tipo = mock(CanceladaInterface.class);
-        when(tipo.ganancia(any(Evento.class), any(Ganador.class), any(BigDecimal.class))).thenReturn(BigDecimal.ONE);
+        when(tipo.ganancia(any(BigDecimal.class))).thenReturn(BigDecimal.ONE);
         cancelada = new SeguraCancelada(tipo);
     }
 

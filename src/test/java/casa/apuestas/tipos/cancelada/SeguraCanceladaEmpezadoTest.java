@@ -21,6 +21,6 @@ class SeguraCanceladaEmpezadoTest {
 
     @Test
     void ganancia() {
-        assertEquals(0, canceladaEmpezado.ganancia(mock(Evento.class), Ganador.VISITANTE, BigDecimal.TEN).compareTo(new BigDecimal(3)));
+        assertEquals(0, canceladaEmpezado.ganancia(BigDecimal.TEN).compareTo(new BigDecimal(3)));
     }
 }

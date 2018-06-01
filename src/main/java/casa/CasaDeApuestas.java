@@ -5,17 +5,15 @@ import casa.balance.BalanceNotifier;
 import java.time.Month;
 import java.util.List;
 
-class Home {
+class CasaDeApuestas {
     private List<User> usuarios;
-    private HistorialInterface historial;
     private BalanceNotifier balanceNotifier;
 
     /**
      * Constructor. Recibe una lista de usuarios, un historial, y un balancerNotifier
      */
-    Home(List<User> usuarios, HistorialInterface historial, BalanceNotifier balanceNotifier) {
+    CasaDeApuestas(List<User> usuarios, BalanceNotifier balanceNotifier) {
         this.usuarios = usuarios;
-        this.historial = historial;
         this.balanceNotifier = balanceNotifier;
     }
 

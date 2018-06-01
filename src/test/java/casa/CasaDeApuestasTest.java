@@ -11,9 +11,9 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-class HomeTest {
+class CasaDeApuestasTest {
 
-    private Home home;
+    private CasaDeApuestas casaDeApuestas;
     private User u;
     private BalanceNotifier balance;
 
@@ -24,12 +24,12 @@ class HomeTest {
         when(u.getGanancia(Month.JANUARY)).thenReturn(BigDecimal.TEN);
         List<User> lista = new ArrayList<>();
         lista.add(u);
-        home = new Home(lista, mock(HistorialInterface.class), balance);
+        casaDeApuestas = new CasaDeApuestas(lista,balance);
     }
 
     @Test
     void notifyBalance() {
-        home.notifyBalance(1);
+        casaDeApuestas.notifyBalance(1);
         verify(balance).notifyBalance(u, 1, BigDecimal.TEN);
     }
 }

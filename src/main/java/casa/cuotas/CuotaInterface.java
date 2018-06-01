@@ -4,7 +4,7 @@ import casa.partido.PartidoInterface;
 
 import java.math.BigDecimal;
 
-public interface AlgortimoInterface {
+public interface CuotaInterface {
 
     BigDecimal local(PartidoInterface p);
 

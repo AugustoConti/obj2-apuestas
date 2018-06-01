@@ -7,7 +7,7 @@ import casa.partido.PartidoInterface;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class HistoriaReciente implements AlgortimoInterface {
+public class HistoriaReciente implements CuotaInterface {
 
     private HistorialInterface historial;
     private static Integer cantUltimosNPartidos = 10;

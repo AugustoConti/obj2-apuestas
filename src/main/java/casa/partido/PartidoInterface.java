@@ -25,4 +25,6 @@ public interface PartidoInterface {
 
     void setState(EstadoPartido estado);
 
+    Ganador ganador();
+
 }

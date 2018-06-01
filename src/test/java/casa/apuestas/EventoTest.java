@@ -1,7 +1,7 @@
 package casa.apuestas;
 
 import casa.TipeableInterface;
-import casa.cuotas.AlgortimoInterface;
+import casa.cuotas.CuotaInterface;
 import casa.partido.Ganador;
 import casa.partido.PartidoInterface;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,12 +23,12 @@ class EventoTest {
     void setUp() {
         partido = mock(PartidoInterface.class);
 
-        AlgortimoInterface algoritmo = mock(AlgortimoInterface.class);
-        when(algoritmo.local(any(PartidoInterface.class))).thenReturn(BigDecimal.ZERO);
-        when(algoritmo.empate(any(PartidoInterface.class))).thenReturn(BigDecimal.ONE);
-        when(algoritmo.visitante(any(PartidoInterface.class))).thenReturn(BigDecimal.TEN);
+        CuotaInterface cuota = mock(CuotaInterface.class);
+        when(cuota.local(any(PartidoInterface.class))).thenReturn(BigDecimal.ZERO);
+        when(cuota.empate(any(PartidoInterface.class))).thenReturn(BigDecimal.ONE);
+        when(cuota.visitante(any(PartidoInterface.class))).thenReturn(BigDecimal.TEN);
 
-        evento = new Evento(partido, algoritmo);
+        evento = new Evento(partido, cuota);
     }
 
     @Test
