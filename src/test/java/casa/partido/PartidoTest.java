@@ -18,16 +18,16 @@ class PartidoTest {
     private OponenteInterface local;
     private OponenteInterface visitante;
     private EstadoPartido estado;
+    private LocalDateTime fecha;
 
     @BeforeEach
     void setUp() {
         local = mock(OponenteInterface.class);
         visitante = mock(OponenteInterface.class);
+        fecha = LocalDateTime.of(2018, 5, 25, 10, 0);
         estado = mock(EstadoPartido.class);
         when(estado.terminado()).thenReturn(true);
-        partido = new Partido(mock(DeporteInterface.class), local, visitante,
-                LocalDateTime.of(2018, 5, 25, 10, 0), "Bernal",
-                Ganador.NINGUNO, estado);
+        partido = new Partido(mock(DeporteInterface.class), local, visitante, fecha, "Bernal", Ganador.NINGUNO, estado);
     }
 
     @Test
@@ -68,6 +68,11 @@ class PartidoTest {
     @Test
     void inMonthFalse() {
         assertFalse(partido.inMonth(Month.JANUARY));
+    }
+
+    @Test
+    void fecha() {
+        assertEquals(fecha, partido.fecha());
     }
 
     @Test
