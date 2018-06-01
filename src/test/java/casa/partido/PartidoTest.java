@@ -41,6 +41,11 @@ class PartidoTest {
     }
 
     @Test
+    void ganador() {
+        assertEquals(Ganador.NINGUNO, partido.ganador());
+    }
+
+    @Test
     void terminado() {
         assertTrue(partido.terminado());
     }
@@ -83,5 +88,13 @@ class PartidoTest {
     void nextState() {
         partido.nextState();
         verify(estado).nextState(partido);
+    }
+
+    @Test
+    void nextStateTerminado() {
+        EstadoPartido estadoTerminado = mock(EstadoPartido.class);
+        partido.setState(estadoTerminado);
+        partido.nextState();
+        verify(estadoTerminado).nextState(partido);
     }
 }
