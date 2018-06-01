@@ -11,11 +11,11 @@ public interface PartidoInterface {
 
     OponenteInterface visitante();
 
-    boolean terminado();
+    Boolean terminado();
 
-    boolean acierto(Ganador favorito);
+    Boolean acierto(Ganador favorito);
 
-    boolean inMonth(Month month);
+    Boolean inMonth(Month month);
 
     void cancelarApuesta(TipeableInterface apuesta) throws Exception;
 

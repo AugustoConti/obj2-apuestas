@@ -47,7 +47,7 @@ public class Partido implements PartidoInterface {
      * Retorna true si el estadado del partido es terminado
      */
     @Override
-    public boolean terminado() {
+    public Boolean terminado() {
         return estado.terminado();
     }
 
@@ -55,7 +55,7 @@ public class Partido implements PartidoInterface {
      * Recibe un  favorito . Retorna true si el ganador del partido es igual a favorito
      */
     @Override
-    public boolean acierto(Ganador favorito) {
+    public Boolean acierto(Ganador favorito) {
         return ganador == favorito;
     }
 
@@ -63,7 +63,7 @@ public class Partido implements PartidoInterface {
      * Recibe un mes. Retorna true si el mes del comienzo del partido es igual al mes que recibe
      */
     @Override
-    public boolean inMonth(Month month) {
+    public Boolean inMonth(Month month) {
         return comienzo.getMonth() == month;
     }
 

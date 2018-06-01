@@ -11,7 +11,7 @@ public class PartidoEmpezado implements EstadoPartido {
      * Retorna siempre false si el partido no termino
      */
     @Override
-    public boolean terminado() {
+    public Boolean terminado() {
         return false;
     }
 

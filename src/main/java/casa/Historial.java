@@ -13,45 +13,43 @@ public class Historial implements HistorialInterface {
 
     public Historial(List<PartidoInterface> historialDePartidos) {this.historialDePartidos = historialDePartidos;}
 
-    private List<PartidoInterface> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
-        return historialDePartidos.stream().filter(
-                p -> p.local() == local && p.visitante() == visitante).collect(Collectors.toList());
+    private List<PartidoInterface> enfrentamientosEntre(OponenteInterface l, OponenteInterface v) {
+        return historialDePartidos.stream().filter(p -> p.local() == l && p.visitante() == v).collect(Collectors.toList());
     }
 
-    private List<PartidoInterface> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador ganador) {
-        return enfrentamientosEntre(local, visitante).stream().filter(
-                p -> p.acierto(ganador)).collect(Collectors.toList());
+    private List<PartidoInterface> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador g) {
+        return enfrentamientosEntre(local, visitante).stream().filter(p -> p.acierto(g)).collect(Collectors.toList());
     }
 
     @Override
-    public int cantVictoriasDe(OponenteInterface a, OponenteInterface b) {
+    public Integer cantVictoriasDe(OponenteInterface a, OponenteInterface b) {
         return victoriasDeLocalAVisitanteConGanador(a, b, Ganador.LOCAL).size()
                 + victoriasDeLocalAVisitanteConGanador(b, a, Ganador.VISITANTE).size();
     }
 
     @Override
-    public int cantEmpatesEntre(OponenteInterface a, OponenteInterface b) {
+    public Integer cantEmpatesEntre(OponenteInterface a, OponenteInterface b) {
         return victoriasDeLocalAVisitanteConGanador(a, b, Ganador.NINGUNO).size()
                 + victoriasDeLocalAVisitanteConGanador(b, a, Ganador.NINGUNO).size();
     }
 
     @Override
-    public int cantidadEnfrentamientos(OponenteInterface a, OponenteInterface b) {
+    public Integer cantidadEnfrentamientos(OponenteInterface a, OponenteInterface b) {
         return enfrentamientosEntre(a, b).size() + enfrentamientosEntre(b, a).size();
     }
 
     @Override
-    public int cantVictoriasEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
+    public Integer cantVictoriasEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
         return 0;
     }
 
     @Override
-    public int cantUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
+    public Integer cantUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
         return 0;
     }
 
     @Override
-    public int cantEmpatesEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
+    public Integer cantEmpatesEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
         return 0;
     }
 
