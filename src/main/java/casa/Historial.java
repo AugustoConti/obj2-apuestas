@@ -18,24 +18,29 @@ public class Historial implements HistorialInterface {
         return historialDePartidos.stream().filter(PartidoInterface::terminado).collect(Collectors.toList());
     }
 
-    private List<PartidoInterface> enfrentamientosEntre(OponenteInterface l, OponenteInterface v) {
-        return partidosTerminados().stream().filter(p -> p.local() == l && p.visitante() == v).collect(Collectors.toList());
+    private List<PartidoInterface> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
+        return partidosTerminados().stream().filter(p -> p.local() == local && p.visitante() == visitante).collect(Collectors.toList());
     }
 
-    private List<PartidoInterface> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador g) {
+    private List<PartidoInterface> resultadoDe(OponenteInterface local, OponenteInterface visitante, Ganador g) {
         return enfrentamientosEntre(local, visitante).stream().filter(p -> p.acierto(g)).collect(Collectors.toList());
+    }
+
+    private List<PartidoInterface> victoriasDe(OponenteInterface a, OponenteInterface b){
+        List<PartidoInterface> ret = resultadoDe(a, b, Ganador.LOCAL);
+        ret.addAll(resultadoDe(b, a, Ganador.VISITANTE));
+        return ret;
     }
 
     @Override
     public Integer cantVictoriasDe(OponenteInterface a, OponenteInterface b) {
-        return victoriasDeLocalAVisitanteConGanador(a, b, Ganador.LOCAL).size()
-                + victoriasDeLocalAVisitanteConGanador(b, a, Ganador.VISITANTE).size();
+        return victoriasDe(a, b).size();
     }
 
     @Override
     public Integer cantEmpatesEntre(OponenteInterface a, OponenteInterface b) {
-        return victoriasDeLocalAVisitanteConGanador(a, b, Ganador.NINGUNO).size()
-                + victoriasDeLocalAVisitanteConGanador(b, a, Ganador.NINGUNO).size();
+        return resultadoDe(a, b, Ganador.NINGUNO).size()
+                + resultadoDe(b, a, Ganador.NINGUNO).size();
     }
 
     @Override
