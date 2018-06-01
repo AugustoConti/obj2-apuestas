@@ -15,7 +15,7 @@ public class HistoriaReciente implements CuotaInterface {
     public HistoriaReciente(HistorialInterface historial) {this.historial = historial;}
 
     private BigDecimal probabilidad(Integer cantidad, Integer divisor) {
-        return new BigDecimal(cantidad).divide(new BigDecimal(divisor), 2, RoundingMode.HALF_DOWN);
+        return BigDecimal.valueOf(cantidad).divide(BigDecimal.valueOf(divisor), 2, RoundingMode.HALF_DOWN);
     }
 
     private BigDecimal probabilidadVictoriaDe(OponenteInterface oponente) {
@@ -37,7 +37,7 @@ public class HistoriaReciente implements CuotaInterface {
     public BigDecimal empate(PartidoInterface p) {
         return probabilidadEmpateDe(p.local())
                 .add(probabilidadEmpateDe(p.visitante()))
-                .divide(new BigDecimal(2), 2, RoundingMode.HALF_DOWN);
+                .divide(BigDecimal.valueOf(2), 2, RoundingMode.HALF_DOWN);
     }
 
     @Override
