@@ -9,7 +9,7 @@ public class PartidoTerminado implements EstadoPartido {
      * Retorna true ya que el partido termino
      */
     @Override
-    public boolean terminado() {
+    public Boolean terminado() {
         return true;
     }
 

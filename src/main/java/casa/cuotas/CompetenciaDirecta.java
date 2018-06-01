@@ -17,7 +17,7 @@ public class CompetenciaDirecta implements CuotaInterface {
      * Calcula la probabilidad de victorias del oponente a sobre el b en la cantidad de partidos que se enfrentaron
      */
     private BigDecimal porcentajeVictorias(OponenteInterface a, OponenteInterface b) {
-        return new BigDecimal((double) historial.cantVictoriasDe(a, b) / historial.cantidadEnfrentamientos(a, b),
+        return BigDecimal.valueOf((double) historial.cantVictoriasDe(a, b) / historial.cantidadEnfrentamientos(a, b),
                 new MathContext(2));
     }
 
@@ -34,7 +34,7 @@ public class CompetenciaDirecta implements CuotaInterface {
      */
     @Override
     public BigDecimal empate(PartidoInterface p) {
-        return new BigDecimal((double) historial.cantEmpatesEntre(p.local(), p.visitante()) /
+        return  BigDecimal.valueOf((double) historial.cantEmpatesEntre(p.local(), p.visitante()) /
                 historial.cantidadEnfrentamientos(p.local(), p.visitante()),
                 new MathContext(2));
     }

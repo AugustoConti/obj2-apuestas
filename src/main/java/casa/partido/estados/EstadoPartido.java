@@ -5,7 +5,7 @@ import casa.partido.PartidoInterface;
 
 public interface EstadoPartido {
 
-    boolean terminado();
+    Boolean terminado();
 
     void nextState(PartidoInterface partido);
 

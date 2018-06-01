@@ -64,7 +64,7 @@ public class Apuesta implements TipeableInterface {
     /**
      * Retorna el mes del evento
      */
-    public boolean inMonth(Month month) {
+    public Boolean inMonth(Month month) {
         return evento.inMonth(month);
     }
 }

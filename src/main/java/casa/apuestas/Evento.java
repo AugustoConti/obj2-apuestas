@@ -29,7 +29,7 @@ public class Evento {
     /**
      * Recibe un mes y retorna true si el partido
      */
-    public boolean inMonth(Month month) {
+    public Boolean inMonth(Month month) {
         return partido.inMonth(month);
     }
 
@@ -50,14 +50,14 @@ public class Evento {
     /**
      * Le pregunta al pertido si termino. retorna true si el mismo termino
      */
-    public boolean terminado() {
+    public Boolean terminado() {
         return partido.terminado();
     }
 
     /**
      * Recibe un favorito, retorna true si el favorito es igual al ganador del partido
      */
-    public boolean acierto(Ganador favorito) {
+    public Boolean acierto(Ganador favorito) {
         return partido.acierto(favorito);
     }
 

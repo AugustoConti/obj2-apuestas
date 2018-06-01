@@ -14,7 +14,7 @@ public class HistoriaReciente implements CuotaInterface {
 
     public HistoriaReciente(HistorialInterface historial) {this.historial = historial;}
 
-    private BigDecimal probabilidad(int cantidad, int divisor) {
+    private BigDecimal probabilidad(Integer cantidad, Integer divisor) {
         return new BigDecimal(cantidad).divide(new BigDecimal(divisor), 2, RoundingMode.HALF_DOWN);
     }
 
