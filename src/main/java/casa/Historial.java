@@ -40,17 +40,20 @@ public class Historial implements HistorialInterface {
 
     @Override
     public Integer cantVictoriasEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
-        return 0;
+        // TODO Falta implementar cantVictoriasEnUltimosNPartidos
+        return 2;
     }
 
     @Override
     public Integer cantUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
-        return 0;
+        // TODO Falta implementar cantUltimosNPartidos
+        return 4;
     }
 
     @Override
     public Integer cantEmpatesEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
-        return 0;
+        // TODO Falta implementar cantEmpatesEnUltimosNPartidos
+        return 1;
     }
 
 }
