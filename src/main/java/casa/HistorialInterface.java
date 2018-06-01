@@ -2,10 +2,11 @@ package casa;
 
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
+import casa.partido.PartidoInterface;
 
 public interface HistorialInterface {
 
-    void addPartido(Partido partido);
+    void addPartido(PartidoInterface partido);
 
     int cantVictoriasDe(OponenteInterface a, OponenteInterface b);
 

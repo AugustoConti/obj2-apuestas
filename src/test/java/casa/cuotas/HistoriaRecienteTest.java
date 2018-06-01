@@ -29,8 +29,12 @@ class HistoriaRecienteTest {
         when(partido.visitante()).thenReturn(b);
 
         HistorialInterface historial = mock(HistorialInterface.class);
-        when(historial.ultimosNPartidos(a, 10)).thenReturn(Arrays.asList("V", "E", "V", "D", "V", "E", "E", "D", "E", "D"));
-        when(historial.ultimosNPartidos(b, 10)).thenReturn(Arrays.asList("V", "E", "V", "V", "V", "D", "V", "V", "E", "V"));
+        when(historial.cantVictoriasEnUltimosNPartidos(a, 10)).thenReturn(3);
+        when(historial.cantVictoriasEnUltimosNPartidos(b, 10)).thenReturn(7);
+        when(historial.cantEmpatesEnUltimosNPartidos(a, 10)).thenReturn(3);
+        when(historial.cantEmpatesEnUltimosNPartidos(b, 10)).thenReturn(3);
+        when(historial.cantUltimosNPartidos(b, 10)).thenReturn(10);
+
         compe = new HistoriaReciente(historial);
     }
 

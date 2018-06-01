@@ -3,27 +3,28 @@ package casa;
 import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
+import casa.partido.PartidoInterface;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Historial implements HistorialInterface {
 
-    private List<Partido> historialDePartidos;
+    private List<PartidoInterface> historialDePartidos;
 
-    public Historial(List<Partido> historialDePartidos) {this.historialDePartidos = historialDePartidos;}
+    public Historial(List<PartidoInterface> historialDePartidos) {this.historialDePartidos = historialDePartidos;}
 
-    public void addPartido(Partido partido) {
+    public void addPartido(PartidoInterface partido) {
         historialDePartidos.add(partido);
     }
 
-    private List<Partido> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
+    private List<PartidoInterface> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
         return historialDePartidos.stream().filter(
                 p -> p.local() == local && p.visitante() == visitante).collect(Collectors.toList());
 
     }
 
-    private List<Partido> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador ganador) {
+    private List<PartidoInterface> victoriasDeLocalAVisitanteConGanador(OponenteInterface local, OponenteInterface visitante, Ganador ganador) {
         return enfrentamientosEntre(local, visitante).stream().filter(
                 p -> p.acierto(ganador)).collect(Collectors.toList());
     }
