@@ -29,9 +29,9 @@ class CompetenciaDirectaTest {
         when(partido.visitante()).thenReturn(b);
 
         HistorialInterface historial = mock(HistorialInterface.class);
-        when(historial.victoriasDe(a, b)).thenReturn(14);
-        when(historial.victoriasDe(b, a)).thenReturn(4);
-        when(historial.empatesEntre(any(OponenteInterface.class), any(OponenteInterface.class))).thenReturn(2);
+        when(historial.cantVictoriasDe(a, b)).thenReturn(14);
+        when(historial.cantVictoriasDe(b, a)).thenReturn(4);
+        when(historial.cantEmpatesEntre(any(OponenteInterface.class), any(OponenteInterface.class))).thenReturn(2);
         when(historial.cantidadEnfrentamientos(any(OponenteInterface.class), any(OponenteInterface.class))).thenReturn(20);
         compe = new CompetenciaDirecta(historial);
     }

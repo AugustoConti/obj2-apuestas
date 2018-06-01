@@ -41,7 +41,8 @@ public class Historial implements HistorialInterface {
     public List<String> ultimosNPartidos(OponenteInterface a, int n) {
         List<Partido> nPartidos = historialDePartidos.stream().filter(
                 p -> p.local() == a || p.visitante() == a).collect(Collectors.toList());
-        return nPartidos;
+        // TODO arreglar esto
+        return new ArrayList<>();
     }
 
 

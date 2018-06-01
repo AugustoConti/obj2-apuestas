@@ -15,7 +15,7 @@ public class CompetenciaDirecta implements AlgortimoInterface {
 
     /* Recibe dos oponentes. Calcula la probabilidad de victorias del oponente a sobre el b en la cantidad de partidos que se enfrentaron */
     private BigDecimal victoriasSobre(OponenteInterface a, OponenteInterface b) {
-        return new BigDecimal((double) historial.victoriasDe(a, b) / historial.cantidadEnfrentamientos(a, b),
+        return new BigDecimal((double) historial.cantVictoriasDe(a, b) / historial.cantidadEnfrentamientos(a, b),
                 new MathContext(2));
     }
 
@@ -28,7 +28,7 @@ public class CompetenciaDirecta implements AlgortimoInterface {
     /* Recibe dos oponentes. Calcula la probabilidad de empates del oponente a sobre el b en la cantidad de partidos que se enfrentaron */
     @Override
     public BigDecimal empate(PartidoInterface p) {
-        return new BigDecimal((double) historial.empatesEntre(p.local(), p.visitante()) /
+        return new BigDecimal((double) historial.cantEmpatesEntre(p.local(), p.visitante()) /
                 historial.cantidadEnfrentamientos(p.local(), p.visitante()),
                 new MathContext(2));
     }
