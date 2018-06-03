@@ -1,4 +1,4 @@
-# Trabajo Práctico Integrador - Objetos 2 UNQ 2018 - 1er Semestre
+# TP Integrador - Obj2 UNQ 2018 - 1er Semestre
 
 ## Casa de Apuestas Deportivas Online
 
@@ -76,18 +76,48 @@ public class TextMessageBalanceNotifier implements BalanceNotifier{
 
 > Nota: usted no debe implementar la clase TextMessageBalanceNotifier. Simplemente asuma que exista.
 
-## Esto no es todo
+# Hito 2
 
-El sitio cuenta con más funcionalidades que se basan en lo que se describe en este documento. Estas funcionalidades restantes serán detalladas próximamente. Mientras tanto, la información de este documento es válida para comenzar a realizar los diseños preliminares del modelo del sitio.
+## Envío mensual de balance vía Email
+La casa de apuestas puede optar por enviar el balance mensual a los usuarios por email, en lugar de hacerlo por mensaje de texto.
+
+Para ello, ya existe una clase con la siguiente definición (asuma que esta clase existe y que NO puede ser modificada):
+
+```java
+public class EmailBalanceNotifier {
+     void emailBalance(String userEmail, Integer month, BigDecimal monthlyBalance){
+           //codigo
+     }
+}
+```
+
+> Se debe permitir que la casa de apuestas notifique el balance por email, de la misma manera que lo hace por mensaje de texto.
+
+## Sistema de Notificaciones
+Debe ser posible que diversos interesados puedan suscribirse y recibir notificaciones ante cambios en los partidos. En particular, son eventos de interés el comienzo y la finalización de un partido.  
+
+En primer lugar, los usuarios deben ser notificados cuando un partido en el que realizó una apuesta ha comenzado o finalizado. Esto le permitirá dar un seguimiento a sus apuestas.
+
+Asimismo la casa de apuestas debe ser notificada cada vez que un partido comienza, ya que de esa manera dejará de ofrecer el partido para apuestas. Usted no debe implementar nada respecto a la oferta de partidos para apuestas que posee la casa de apuestas. Sólo asegúrese que la casa de apuestas reciba la notificación correspondiente.
+
+> Tenga en cuenta que pueden haber nuevos interesados en ser notificados de estos eventos.
+
+## Búsqueda de Eventos Deportivos
+Ante la gran cantidad de eventos deportivos disponibles, la casa de apuestas debe proveer mecanismos para realizar búsquedas complejas. Los siguientes son criterios por los cuales se pueden realizar búsquedas:
+
+- Fecha del partido
+- Deporte
+- Lugar del partido
+- Oponente que interviene en el partido
+
+Estos criterios pueden ser combinados de diversas formas con operadores lógicos OR y AND, para formar expresiones complejas. Los siguientes son ejemplos de criterios de búsqueda:
+
+- Fecha del partido > ‘20/04/2019’
+- Deporte = ‘Futbol’ AND  Oponente = ‘Estudiantes de La Plata’
+- Deporte = ‘Futbol’ AND (Oponente  = ‘Estudiantes’ OR Oponente = ‘Aldosivi’)
+- (Lugar = 'La Plata' AND Oponente  = ‘Estudiantes’ AND Oponente = ‘Gimnasia’) OR (Lugar = 'CABA' AND Oponente  = ‘Boca’ AND Oponente = ‘River’)
 
 # Cronograma y Pautas de Entrega
-
-## Estructura:
-
-Este trabajo integrador está planificado para ser realizado en dos etapas:
-
-- Hito 1: Se centra en la primera entrega del enunciado y se debe trabajar sobre el Modelo de Clases y codificación en Java.
-- Hito 2: Se centra en una una extensión del enunciado original, y se debe trabajar sobre la extensión del Modelo de Clases y su codificación completa en Java.
 
 ## Cronograma:
 
@@ -105,4 +135,8 @@ Se establecen tres instancias de visado, en las cuales deberán estar presentes 
 
 - Codificación en Java: debe tener codificado en Java al menos la funcionalidad correspondiente a las secciones Partido/Juego y Cuotas de Apuestas. Debe incluir tests, con al menos un 95% de cobertura utilizando la herramienta de eclipse EclEmma.
 
-.
+## Entrega del Hito 2:
+
+- Modelo de Clases: realizar el modelo de clases para el dominio descripto y confeccionar el Diagrama de Clases en UML correspondiente. Debe entregar un único archivo en formato PDF. No se aceptarán entregas en otros formato.
+
+- Codificación en Java: debe tener codificado en Java la totalidad de la funcionalidad correspondientes a los Hitos 1 y 2.
