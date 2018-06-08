@@ -82,6 +82,7 @@ public class Partido {
     public void nextState() {
         estado.nextState(this);
     }
+    // TODO setear resultado antes de finalizar el partido, que no lo reciba en el constructor
 
     /**
      * Recibe un estado. Setea el estado del partido con el que recibe
