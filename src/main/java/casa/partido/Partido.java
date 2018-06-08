@@ -6,8 +6,10 @@ import casa.partido.estados.EstadoPartido;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Partido {
+public class Partido extends Observable {
     private DeporteInterface deporte;
     private OponenteInterface local;
     private OponenteInterface visitante;
@@ -16,6 +18,7 @@ public class Partido {
     private Ganador ganador;
     private EstadoPartido estado;
 
+    //TODO sacar el "estado" y el "ganador" del constructor.
     public Partido(DeporteInterface deporte, OponenteInterface local, OponenteInterface visitante,
                    LocalDateTime comienzo, String lugar, Ganador ganador, EstadoPartido estado) {
         this.deporte = deporte;
@@ -97,4 +100,7 @@ public class Partido {
         return comienzo;
     }
 
+    public void cambiaste() {
+        setChanged();
+    }
 }

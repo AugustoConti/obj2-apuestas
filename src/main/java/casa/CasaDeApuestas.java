@@ -4,8 +4,10 @@ import casa.balance.BalanceNotifier;
 
 import java.time.Month;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-class CasaDeApuestas {
+public class CasaDeApuestas implements Observer {
     private List<User> usuarios;
     private BalanceNotifier balanceNotifier;
 
@@ -24,6 +26,11 @@ class CasaDeApuestas {
         for (User u : usuarios) {
             balanceNotifier.notifyBalance(u, month, u.getGanancia(Month.of(month)));
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }
 
