@@ -47,7 +47,7 @@ public class Apuesta {
      * Retorna la ganancia neta de la apuesta . retorna 0 si el evento no termino
      */
     public BigDecimal gananciaNeta() {
-        if(!evento.terminado()) {
+        if (!evento.terminado()) {
             return BigDecimal.ZERO;
         }
         return tipo.ganancia(evento, favorito, monto);

@@ -21,7 +21,7 @@ class CasaDeApuestas {
      * Recibe un mes. Envia a cada usuario el balance (ganancia) del mes
      */
     void notifyBalance(Integer month) {
-        for(User u : usuarios) {
+        for (User u : usuarios) {
             balanceNotifier.notifyBalance(u, month, u.getGanancia(Month.of(month)));
         }
     }

@@ -1,6 +1,5 @@
 package casa.apuestas.tipos;
 
-import casa.TipeableInterface;
 import casa.apuestas.Evento;
 import casa.partido.Ganador;
 import org.junit.jupiter.api.BeforeEach;

@@ -12,7 +12,9 @@ public class Historial {
 
     private List<Partido> historialDePartidos;
 
-    public Historial(List<Partido> historialDePartidos) {this.historialDePartidos = historialDePartidos;}
+    public Historial(List<Partido> historialDePartidos) {
+        this.historialDePartidos = historialDePartidos;
+    }
 
     private List<Partido> partidosTerminados() {
         return historialDePartidos.stream().filter(Partido::terminado).collect(Collectors.toList());
@@ -26,7 +28,7 @@ public class Historial {
         return enfrentamientosEntre(local, visitante).stream().filter(p -> p.acierto(g)).collect(Collectors.toList());
     }
 
-    private List<Partido> victoriasDe(OponenteInterface a, OponenteInterface b){
+    private List<Partido> victoriasDe(OponenteInterface a, OponenteInterface b) {
         List<Partido> ret = resultadoDe(a, b, Ganador.LOCAL);
         ret.addAll(resultadoDe(b, a, Ganador.VISITANTE));
         return ret;
@@ -45,7 +47,7 @@ public class Historial {
         return enfrentamientosEntre(a, b).size() + enfrentamientosEntre(b, a).size();
     }
 
-    private List<Partido> ultimosNPartidoDe(OponenteInterface oponente, Integer cantidad){
+    private List<Partido> ultimosNPartidoDe(OponenteInterface oponente, Integer cantidad) {
         return partidosTerminados().stream().filter(p -> p.local() == oponente || p.visitante() == oponente)
                 .sorted(Comparator.comparing(Partido::fecha).reversed())
                 .limit(cantidad)
@@ -55,7 +57,7 @@ public class Historial {
     public Integer cantVictoriasEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
         return ultimosNPartidoDe(oponente, cantUltimosNPartidos).stream()
                 .filter(p -> (p.local() == oponente && p.acierto(Ganador.LOCAL))
-                             || (p.visitante() == oponente && p.acierto(Ganador.VISITANTE)))
+                        || (p.visitante() == oponente && p.acierto(Ganador.VISITANTE)))
                 .collect(Collectors.toList()).size();
     }
 

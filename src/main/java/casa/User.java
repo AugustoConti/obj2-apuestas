@@ -30,8 +30,8 @@ public class User {
      */
     public BigDecimal getGanancia(Month month) {
         BigDecimal ganancia = BigDecimal.ZERO;
-        for(Apuesta a : apuestas) {
-            if(a.inMonth(month)) {
+        for (Apuesta a : apuestas) {
+            if (a.inMonth(month)) {
                 ganancia = ganancia.add(a.gananciaBruta());
             }
         }

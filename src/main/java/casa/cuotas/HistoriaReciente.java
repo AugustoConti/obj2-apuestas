@@ -12,7 +12,9 @@ public class HistoriaReciente implements CuotaInterface {
     private Historial historial;
     private static Integer cantUltimosNPartidos = 10;
 
-    public HistoriaReciente(Historial historial) {this.historial = historial;}
+    public HistoriaReciente(Historial historial) {
+        this.historial = historial;
+    }
 
     private BigDecimal probabilidad(Integer cantidad, Integer divisor) {
         return BigDecimal.valueOf(cantidad).divide(BigDecimal.valueOf(divisor), 2, RoundingMode.HALF_DOWN);

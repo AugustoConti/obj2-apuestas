@@ -2,7 +2,6 @@ package casa.apuestas.tipos.segura;
 
 import casa.TipeableInterface;
 import casa.apuestas.Evento;
-import casa.apuestas.tipos.segura.SeguraActiva;
 import casa.partido.Ganador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

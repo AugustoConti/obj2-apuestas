@@ -20,7 +20,7 @@ class HistorialTest {
     private OponenteInterface a;
     private OponenteInterface b;
 
-    Partido newPartido(OponenteInterface local, OponenteInterface visitante, Ganador g){
+    Partido newPartido(OponenteInterface local, OponenteInterface visitante, Ganador g) {
         Partido p = mock(Partido.class);
         when(p.terminado()).thenReturn(true);
         when(p.fecha()).thenReturn(LocalDateTime.now());

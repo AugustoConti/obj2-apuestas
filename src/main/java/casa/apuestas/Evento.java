@@ -67,7 +67,7 @@ public class Evento {
     public BigDecimal cuota(Ganador favorito) {
 
         BigDecimal cuota = null;
-        switch(favorito) {
+        switch (favorito) {
             case LOCAL:
                 cuota = cuotaLocal;
                 break;

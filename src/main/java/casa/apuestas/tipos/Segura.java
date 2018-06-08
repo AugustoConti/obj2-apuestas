@@ -11,7 +11,9 @@ public class Segura implements TipoApuestaInterface, TipeableInterface {
 
     private SeguraInterface tipo;
 
-    public Segura(SeguraInterface tipoSegura) {this.tipo = tipoSegura;}
+    public Segura(SeguraInterface tipoSegura) {
+        this.tipo = tipoSegura;
+    }
 
     /**
      * Una apuesta segura no pude ser segura

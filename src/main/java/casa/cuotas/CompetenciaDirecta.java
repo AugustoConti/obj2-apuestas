@@ -11,7 +11,9 @@ public class CompetenciaDirecta implements CuotaInterface {
 
     private Historial historial;
 
-    public CompetenciaDirecta(Historial historial) {this.historial = historial;}
+    public CompetenciaDirecta(Historial historial) {
+        this.historial = historial;
+    }
 
     /**
      * Calcula la probabilidad de victorias del oponente a sobre el b en la cantidad de partidos que se enfrentaron

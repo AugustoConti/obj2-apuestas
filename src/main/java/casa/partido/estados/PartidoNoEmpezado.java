@@ -2,7 +2,6 @@ package casa.partido.estados;
 
 import casa.TipeableInterface;
 import casa.apuestas.tipos.segura.SeguraActiva;
-import casa.apuestas.tipos.Segura;
 import casa.apuestas.tipos.segura.SeguraCancelada;
 import casa.apuestas.tipos.segura.cancelada.SeguraCanceladaNoEmpezado;
 import casa.partido.Partido;

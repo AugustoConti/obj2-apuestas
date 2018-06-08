@@ -1,6 +1,5 @@
 package casa.apuestas.tipos;
 
-import casa.TipeableInterface;
 import casa.apuestas.Evento;
 import casa.apuestas.tipos.segura.SeguraInterface;
 import casa.partido.Ganador;
@@ -9,11 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class SeguraTest {
 
