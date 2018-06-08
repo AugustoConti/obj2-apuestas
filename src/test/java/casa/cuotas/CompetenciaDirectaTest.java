@@ -1,8 +1,8 @@
 package casa.cuotas;
 
-import casa.HistorialInterface;
+import casa.Historial;
 import casa.partido.OponenteInterface;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,18 +17,18 @@ import static org.mockito.Mockito.when;
 class CompetenciaDirectaTest {
 
     private CompetenciaDirecta compe;
-    private PartidoInterface partido;
+    private Partido partido;
 
     @BeforeEach
     void setUp() {
         OponenteInterface a = mock(OponenteInterface.class);
         OponenteInterface b = mock(OponenteInterface.class);
 
-        partido = mock(PartidoInterface.class);
+        partido = mock(Partido.class);
         when(partido.local()).thenReturn(a);
         when(partido.visitante()).thenReturn(b);
 
-        HistorialInterface historial = mock(HistorialInterface.class);
+        Historial historial = mock(Historial.class);
         when(historial.cantVictoriasDe(a, b)).thenReturn(14);
         when(historial.cantVictoriasDe(b, a)).thenReturn(4);
         when(historial.cantEmpatesEntre(any(OponenteInterface.class), any(OponenteInterface.class))).thenReturn(2);

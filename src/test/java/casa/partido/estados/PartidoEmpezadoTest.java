@@ -1,8 +1,8 @@
 package casa.partido.estados;
 
 import casa.TipeableInterface;
-import casa.apuestas.tipos.SeguraCancelada;
-import casa.partido.PartidoInterface;
+import casa.apuestas.tipos.segura.SeguraCancelada;
+import casa.partido.Partido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,7 +40,7 @@ class PartidoEmpezadoTest {
 
     @Test
     void nextState() {
-        PartidoInterface partido = mock(PartidoInterface.class);
+        Partido partido = mock(Partido.class);
         empezado.nextState(partido);
         verify(partido).setState(any(PartidoTerminado.class));
     }

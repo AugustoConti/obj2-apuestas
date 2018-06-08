@@ -1,13 +1,13 @@
 package casa.partido.estados;
 
 import casa.TipeableInterface;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 
 public interface EstadoPartido {
 
     Boolean terminado();
 
-    void nextState(PartidoInterface partido);
+    void nextState(Partido partido);
 
     void cancelarApuesta(TipeableInterface apuesta) throws Exception;
 

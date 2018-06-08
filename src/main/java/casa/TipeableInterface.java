@@ -1,9 +1,9 @@
 package casa;
 
-import casa.apuestas.tipos.TipoApuestaInterface;
+import casa.apuestas.tipos.segura.SeguraInterface;
 
 public interface TipeableInterface {
 
-    void setTipo(TipoApuestaInterface tipo);
+    void setTipo(SeguraInterface tipo);
 
 }

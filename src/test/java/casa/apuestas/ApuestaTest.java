@@ -26,20 +26,15 @@ class ApuestaTest {
     }
 
     @Test
-    void setTipo() {
-        apuesta.setTipo(mock(TipoApuestaInterface.class));
-    }
-
-    @Test
     void cancelar() throws Exception {
         apuesta.cancelar();
-        verify(tipo).cancelar(evento, apuesta);
+        verify(tipo).cancelar(evento);
     }
 
     @Test
     void reactivar() throws Exception {
         apuesta.reactivar();
-        verify(tipo).reactivar(evento, apuesta);
+        verify(tipo).reactivar(evento);
     }
 
     @Test

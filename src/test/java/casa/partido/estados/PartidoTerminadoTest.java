@@ -1,7 +1,7 @@
 package casa.partido.estados;
 
 import casa.TipeableInterface;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +38,7 @@ class PartidoTerminadoTest {
 
     @Test
     void nextState() {
-        PartidoInterface partido = mock(PartidoInterface.class);
+        Partido partido = mock(Partido.class);
         terminado.nextState(partido);
         verifyZeroInteractions(partido);
     }

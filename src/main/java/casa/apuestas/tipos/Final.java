@@ -1,6 +1,5 @@
 package casa.apuestas.tipos;
 
-import casa.TipeableInterface;
 import casa.apuestas.Evento;
 import casa.partido.Ganador;
 
@@ -12,7 +11,7 @@ public class Final implements TipoApuestaInterface {
      * La apuesta final es una apuesta que no puede cancelarse en ningún momento.
      */
     @Override
-    public void cancelar(Evento evento, TipeableInterface apuesta) throws Exception {
+    public void cancelar(Evento evento) throws Exception {
         throw new Exception("No se puede cancelar una apuesta final");
     }
 
@@ -21,7 +20,7 @@ public class Final implements TipoApuestaInterface {
      * Por conseceucia no se puede ractivar
      */
     @Override
-    public void reactivar(Evento evento, TipeableInterface apuesta) throws Exception {
+    public void reactivar(Evento evento) throws Exception {
         throw new Exception("No se puede reactivar una apuesta final");
     }
 

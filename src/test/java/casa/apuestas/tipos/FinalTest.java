@@ -25,12 +25,12 @@ class FinalTest {
 
     @Test
     void cancelar() {
-        assertThrows(Exception.class, () -> fin.cancelar(mock(Evento.class), mock(TipeableInterface.class)));
+        assertThrows(Exception.class, () -> fin.cancelar(mock(Evento.class)));
     }
 
     @Test
     void reactivar() {
-        assertThrows(Exception.class, () -> fin.reactivar(mock(Evento.class), mock(TipeableInterface.class)));
+        assertThrows(Exception.class, () -> fin.reactivar(mock(Evento.class)));
     }
 
     @Test

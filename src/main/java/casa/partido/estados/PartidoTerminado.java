@@ -1,7 +1,7 @@
 package casa.partido.estados;
 
 import casa.TipeableInterface;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 
 public class PartidoTerminado implements EstadoPartido {
 
@@ -17,7 +17,7 @@ public class PartidoTerminado implements EstadoPartido {
      * No hace nada ya que no existe otro estado despues de Terminado
      */
     @Override
-    public void nextState(PartidoInterface partido) {}
+    public void nextState(Partido partido) {}
 
     /**
      * Recibe una Apuesta. Lanza una exepcion ya que no se puede cancelar una apuesta una vez terminado el partido

@@ -3,7 +3,7 @@ package casa.apuestas;
 import casa.TipeableInterface;
 import casa.cuotas.CuotaInterface;
 import casa.partido.Ganador;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,16 +17,16 @@ import static org.mockito.Mockito.*;
 class EventoTest {
 
     private Evento evento;
-    private PartidoInterface partido;
+    private Partido partido;
 
     @BeforeEach
     void setUp() {
-        partido = mock(PartidoInterface.class);
+        partido = mock(Partido.class);
 
         CuotaInterface cuota = mock(CuotaInterface.class);
-        when(cuota.local(any(PartidoInterface.class))).thenReturn(BigDecimal.ZERO);
-        when(cuota.empate(any(PartidoInterface.class))).thenReturn(BigDecimal.ONE);
-        when(cuota.visitante(any(PartidoInterface.class))).thenReturn(BigDecimal.TEN);
+        when(cuota.local(any(Partido.class))).thenReturn(BigDecimal.ZERO);
+        when(cuota.empate(any(Partido.class))).thenReturn(BigDecimal.ONE);
+        when(cuota.visitante(any(Partido.class))).thenReturn(BigDecimal.TEN);
 
         evento = new Evento(partido, cuota);
     }

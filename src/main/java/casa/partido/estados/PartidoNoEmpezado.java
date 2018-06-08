@@ -1,10 +1,11 @@
 package casa.partido.estados;
 
 import casa.TipeableInterface;
-import casa.apuestas.tipos.SeguraActiva;
-import casa.apuestas.tipos.SeguraCancelada;
-import casa.apuestas.tipos.cancelada.SeguraCanceladaNoEmpezado;
-import casa.partido.PartidoInterface;
+import casa.apuestas.tipos.segura.SeguraActiva;
+import casa.apuestas.tipos.Segura;
+import casa.apuestas.tipos.segura.SeguraCancelada;
+import casa.apuestas.tipos.segura.cancelada.SeguraCanceladaNoEmpezado;
+import casa.partido.Partido;
 
 public class PartidoNoEmpezado implements EstadoPartido {
 
@@ -20,7 +21,7 @@ public class PartidoNoEmpezado implements EstadoPartido {
      * Recine un partido y cambia el estao del partido al siguiente estad, PartidoEmpezado
      */
     @Override
-    public void nextState(PartidoInterface partido) {
+    public void nextState(Partido partido) {
         partido.setState(new PartidoEmpezado());
     }
 

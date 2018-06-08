@@ -1,9 +1,9 @@
-package casa.apuestas.tipos.cancelada;
+package casa.apuestas.tipos.segura.cancelada;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class SeguraCanceladaEmpezado implements CanceladaInterface {
+public class SeguraCanceladaEmpezado implements SeguraCanceladaInterface {
     /**
      * Se le cobra al usuario una penalidad del 30% del total que haya apostado.
      */

@@ -7,7 +7,7 @@ import casa.partido.estados.EstadoPartido;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-public class Partido implements PartidoInterface {
+public class Partido {
     private DeporteInterface deporte;
     private OponenteInterface local;
     private OponenteInterface visitante;
@@ -30,7 +30,6 @@ public class Partido implements PartidoInterface {
     /**
      * Retorna el oponente local del partido
      */
-    @Override
     public OponenteInterface local() {
         return this.local;
     }
@@ -38,7 +37,6 @@ public class Partido implements PartidoInterface {
     /**
      * Retorna el openente visitante del partido
      */
-    @Override
     public OponenteInterface visitante() {
         return this.visitante;
     }
@@ -46,7 +44,6 @@ public class Partido implements PartidoInterface {
     /**
      * Retorna true si el estadado del partido es terminado
      */
-    @Override
     public Boolean terminado() {
         return estado.terminado();
     }
@@ -54,7 +51,6 @@ public class Partido implements PartidoInterface {
     /**
      * Recibe un  favorito . Retorna true si el ganador del partido es igual a favorito
      */
-    @Override
     public Boolean acierto(Ganador favorito) {
         return ganador == favorito;
     }
@@ -62,15 +58,13 @@ public class Partido implements PartidoInterface {
     /**
      * Recibe un mes. Retorna true si el mes del comienzo del partido es igual al mes que recibe
      */
-    @Override
     public Boolean inMonth(Month month) {
         return comienzo.getMonth() == month;
     }
 
     /**
-     * Recibe una apuesta. Cancela la apuesta . Lanza una excepcion si la misma no puede ser cancelada
+     * Recibe una apuesta. Cancela la apuesta . Lanza una excepcion si la misma no puede ser segura
      */
-    @Override
     public void cancelarApuesta(TipeableInterface apuesta) throws Exception {
         estado.cancelarApuesta(apuesta);
     }
@@ -78,7 +72,6 @@ public class Partido implements PartidoInterface {
     /**
      * Recibe una apuesta. Reactiva la misma. Lanza una excepcion si la misma no puede ser reactivada
      */
-    @Override
     public void reactivarApuesta(TipeableInterface apuesta) throws Exception {
         estado.reactivarApuesta(apuesta);
     }
@@ -86,7 +79,6 @@ public class Partido implements PartidoInterface {
     /**
      * Cambia el estado del partido al siguiente estado que le corresponde
      */
-    @Override
     public void nextState() {
         estado.nextState(this);
     }
@@ -94,20 +86,13 @@ public class Partido implements PartidoInterface {
     /**
      * Recibe un estado. Setea el estado del partido con el que recibe
      */
-    @Override
     public void setState(EstadoPartido estado) {
         this.estado = estado;
     }
 
     /**
-     * Obtiene el ganador del partido
+     * Retorna la fecha en la que comenzo el partido.s
      */
-    @Override
-    public Ganador ganador() {
-        return this.ganador;
-    }
-
-    @Override
     public LocalDateTime fecha() {
         return comienzo;
     }

@@ -1,9 +1,10 @@
 package casa.partido.estados;
 
 import casa.TipeableInterface;
-import casa.apuestas.tipos.SeguraCancelada;
-import casa.apuestas.tipos.cancelada.SeguraCanceladaEmpezado;
-import casa.partido.PartidoInterface;
+import casa.apuestas.tipos.Segura;
+import casa.apuestas.tipos.segura.SeguraCancelada;
+import casa.apuestas.tipos.segura.cancelada.SeguraCanceladaEmpezado;
+import casa.partido.Partido;
 
 public class PartidoEmpezado implements EstadoPartido {
 
@@ -19,7 +20,7 @@ public class PartidoEmpezado implements EstadoPartido {
      * recibe un partido y Cambia al estado Terminado
      */
     @Override
-    public void nextState(PartidoInterface partido) {
+    public void nextState(Partido partido) {
         partido.setState(new PartidoTerminado());
     }
 

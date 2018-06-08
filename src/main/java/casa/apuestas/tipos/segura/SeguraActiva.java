@@ -1,4 +1,4 @@
-package casa.apuestas.tipos;
+package casa.apuestas.tipos.segura;
 
 import casa.TipeableInterface;
 import casa.apuestas.Evento;
@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 
 
-public class SeguraActiva implements TipoApuestaInterface {
+public class SeguraActiva implements SeguraInterface {
 
     /**
      * Cancela la apuesta en un evento, recibe un evento y una apuesta

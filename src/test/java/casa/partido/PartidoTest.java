@@ -42,7 +42,7 @@ class PartidoTest {
 
     @Test
     void ganador() {
-        assertEquals(Ganador.NINGUNO, partido.ganador());
+        assertTrue(partido.acierto(Ganador.NINGUNO));
     }
 
     @Test

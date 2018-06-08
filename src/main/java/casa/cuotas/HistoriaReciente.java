@@ -1,18 +1,18 @@
 package casa.cuotas;
 
-import casa.HistorialInterface;
+import casa.Historial;
 import casa.partido.OponenteInterface;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class HistoriaReciente implements CuotaInterface {
 
-    private HistorialInterface historial;
+    private Historial historial;
     private static Integer cantUltimosNPartidos = 10;
 
-    public HistoriaReciente(HistorialInterface historial) {this.historial = historial;}
+    public HistoriaReciente(Historial historial) {this.historial = historial;}
 
     private BigDecimal probabilidad(Integer cantidad, Integer divisor) {
         return BigDecimal.valueOf(cantidad).divide(BigDecimal.valueOf(divisor), 2, RoundingMode.HALF_DOWN);
@@ -29,19 +29,19 @@ public class HistoriaReciente implements CuotaInterface {
     }
 
     @Override
-    public BigDecimal local(PartidoInterface p) {
+    public BigDecimal local(Partido p) {
         return probabilidadVictoriaDe(p.local());
     }
 
     @Override
-    public BigDecimal empate(PartidoInterface p) {
+    public BigDecimal empate(Partido p) {
         return probabilidadEmpateDe(p.local())
                 .add(probabilidadEmpateDe(p.visitante()))
                 .divide(BigDecimal.valueOf(2), 2, RoundingMode.HALF_DOWN);
     }
 
     @Override
-    public BigDecimal visitante(PartidoInterface p) {
+    public BigDecimal visitante(Partido p) {
         return probabilidadVictoriaDe(p.visitante());
     }
 }

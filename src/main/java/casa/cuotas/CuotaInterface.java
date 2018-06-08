@@ -1,15 +1,15 @@
 package casa.cuotas;
 
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 
 import java.math.BigDecimal;
 
 public interface CuotaInterface {
 
-    BigDecimal local(PartidoInterface p);
+    BigDecimal local(Partido p);
 
-    BigDecimal empate(PartidoInterface p);
+    BigDecimal empate(Partido p);
 
-    BigDecimal visitante(PartidoInterface p);
+    BigDecimal visitante(Partido p);
 
 }

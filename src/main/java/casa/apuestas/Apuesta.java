@@ -1,13 +1,12 @@
 package casa.apuestas;
 
-import casa.TipeableInterface;
 import casa.apuestas.tipos.TipoApuestaInterface;
 import casa.partido.Ganador;
 
 import java.math.BigDecimal;
 import java.time.Month;
 
-public class Apuesta implements TipeableInterface {
+public class Apuesta {
     private BigDecimal monto;
     private Ganador favorito;
     private Evento evento;
@@ -24,24 +23,17 @@ public class Apuesta implements TipeableInterface {
     }
 
     /**
-     * Setea el tipo de apuesta
-     */
-    public void setTipo(TipoApuestaInterface tipo) {
-        this.tipo = tipo;
-    }
-
-    /**
      * Cancela la apuesta hecha
      */
     public void cancelar() throws Exception {
-        tipo.cancelar(evento, this);
+        tipo.cancelar(evento);
     }
 
     /**
      * Reactiva la apuesta hacha
      */
     public void reactivar() throws Exception {
-        tipo.reactivar(evento, this);
+        tipo.reactivar(evento);
     }
 
     /**

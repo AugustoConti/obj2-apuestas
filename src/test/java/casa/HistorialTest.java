@@ -2,7 +2,7 @@ package casa;
 
 import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +20,8 @@ class HistorialTest {
     private OponenteInterface a;
     private OponenteInterface b;
 
-    PartidoInterface newPartido(OponenteInterface local, OponenteInterface visitante, Ganador g){
-        PartidoInterface p = mock(PartidoInterface.class);
+    Partido newPartido(OponenteInterface local, OponenteInterface visitante, Ganador g){
+        Partido p = mock(Partido.class);
         when(p.terminado()).thenReturn(true);
         when(p.fecha()).thenReturn(LocalDateTime.now());
         when(p.local()).thenReturn(local);
@@ -35,11 +35,11 @@ class HistorialTest {
         a = mock(OponenteInterface.class);
         b = mock(OponenteInterface.class);
 
-        PartidoInterface p1 = newPartido(a, b, Ganador.LOCAL);
-        PartidoInterface p2 = newPartido(b, a, Ganador.LOCAL);
-        PartidoInterface p3 = newPartido(a, b, Ganador.NINGUNO);
-        PartidoInterface p4 = newPartido(a, mock(OponenteInterface.class), Ganador.LOCAL);
-        List<PartidoInterface> listaPartidos = Arrays.asList(p1, p2, p3, p4);
+        Partido p1 = newPartido(a, b, Ganador.LOCAL);
+        Partido p2 = newPartido(b, a, Ganador.LOCAL);
+        Partido p3 = newPartido(a, b, Ganador.NINGUNO);
+        Partido p4 = newPartido(a, mock(OponenteInterface.class), Ganador.LOCAL);
+        List<Partido> listaPartidos = Arrays.asList(p1, p2, p3, p4);
 
         historial = new Historial(listaPartidos);
     }

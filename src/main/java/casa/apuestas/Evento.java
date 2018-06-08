@@ -3,14 +3,14 @@ package casa.apuestas;
 import casa.TipeableInterface;
 import casa.cuotas.CuotaInterface;
 import casa.partido.Ganador;
-import casa.partido.PartidoInterface;
+import casa.partido.Partido;
 
 import java.math.BigDecimal;
 import java.time.Month;
 
 public class Evento {
 
-    private PartidoInterface partido;
+    private Partido partido;
     private BigDecimal cuotaLocal;
     private BigDecimal cuotaEmpate;
     private BigDecimal cuotaVisitante;
@@ -18,7 +18,7 @@ public class Evento {
     /**
      * Constructor. Crea un evento. Recibe un partido, y un algoritmo para definir la ganancia
      */
-    public Evento(PartidoInterface partido, CuotaInterface cuota) {
+    public Evento(Partido partido, CuotaInterface cuota) {
         this.partido = partido;
         // calcula las coutas segun el algoritmo entregado //
         cuotaLocal = cuota.local(partido);

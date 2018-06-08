@@ -1,8 +1,8 @@
-package casa.apuestas.tipos;
+package casa.apuestas.tipos.segura;
 
 import casa.TipeableInterface;
 import casa.apuestas.Evento;
-import casa.apuestas.tipos.cancelada.CanceladaInterface;
+import casa.apuestas.tipos.segura.cancelada.SeguraCanceladaInterface;
 import casa.partido.Ganador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,30 +15,30 @@ import static org.mockito.Mockito.*;
 
 class SeguraCanceladaTest {
 
-    private SeguraCancelada cancelada;
+    private SeguraCancelada seguraCancelada;
 
     @BeforeEach
     void setUp() {
-        CanceladaInterface tipo = mock(CanceladaInterface.class);
-        when(tipo.ganancia(any(BigDecimal.class))).thenReturn(BigDecimal.ONE);
-        cancelada = new SeguraCancelada(tipo);
+        SeguraCanceladaInterface estado = mock(SeguraCanceladaInterface.class);
+        when(estado.ganancia(any(BigDecimal.class))).thenReturn(BigDecimal.ONE);
+        seguraCancelada = new SeguraCancelada(estado);
     }
 
     @Test
     void cancelar() {
-        assertThrows(Exception.class, () -> cancelada.cancelar(mock(Evento.class), mock(TipeableInterface.class)));
+        assertThrows(Exception.class, () -> seguraCancelada.cancelar(mock(Evento.class), mock(TipeableInterface.class)));
     }
 
     @Test
     void reactivar() throws Exception {
         Evento evento = mock(Evento.class);
         TipeableInterface apuesta = mock(TipeableInterface.class);
-        cancelada.reactivar(evento, apuesta);
+        seguraCancelada.reactivar(evento, apuesta);
         verify(evento).reactivarApuesta(apuesta);
     }
 
     @Test
     void ganancia() {
-        assertEquals(0, cancelada.ganancia(mock(Evento.class), Ganador.VISITANTE, BigDecimal.TEN).compareTo(BigDecimal.ONE));
+        assertEquals(0, seguraCancelada.ganancia(mock(Evento.class), Ganador.VISITANTE, BigDecimal.TEN).compareTo(BigDecimal.ONE));
     }
 }
