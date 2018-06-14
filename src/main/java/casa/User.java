@@ -8,15 +8,19 @@ import java.util.List;
 
 public class User {
     private String nombre;
+    private String email;
     private List<Apuesta> apuestas;
 
     /**
-     * Constructor. Recibe un Nombre (string) y una lista de apuestas
+     * Constructor. Recibe un Nombre, un email y una lista de apuestas
      */
-    public User(String nombre, List<Apuesta> apuestas) {
+    public User(String nombre, String email, List<Apuesta> apuestas) {
         this.nombre = nombre;
+        this.email = email;
         this.apuestas = apuestas;
     }
+
+    public String email() { return this.email; }
 
     /**
      * Recibe una apuesta. Agrega la apuesta a la lista de apuestas
@@ -29,12 +33,6 @@ public class User {
      * Recibe un mes. Retorna la suma de las ganancias de cada apuesta del mes
      */
     public BigDecimal getGanancia(Month month) {
-        BigDecimal ganancia = BigDecimal.ZERO;
-        for (Apuesta a : apuestas) {
-            if (a.inMonth(month)) {
-                ganancia = ganancia.add(a.gananciaBruta());
-            }
-        }
-        return ganancia;
+        return apuestas.stream().filter(apuesta -> apuesta.inMonth(month)).map(Apuesta::gananciaBruta).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

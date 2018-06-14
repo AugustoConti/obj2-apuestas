@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class UserTest {
@@ -19,7 +20,12 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-        user = new User("Juan", new ArrayList<>());
+        user = new User("Juan", "juan@gmail.com", new ArrayList<>());
+    }
+
+    @Test
+    void email() {
+        assertEquals("juan@gmail.com", user.email());
     }
 
     @Test

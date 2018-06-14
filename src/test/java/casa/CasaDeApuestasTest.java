@@ -15,21 +15,20 @@ class CasaDeApuestasTest {
 
     private CasaDeApuestas casaDeApuestas;
     private User u;
-    private BalanceNotifier balance;
 
     @BeforeEach
     void setUp() {
-        balance = mock(BalanceNotifier.class);
         u = mock(User.class);
         when(u.getGanancia(Month.JANUARY)).thenReturn(BigDecimal.TEN);
         List<User> lista = new ArrayList<>();
         lista.add(u);
-        casaDeApuestas = new CasaDeApuestas(lista, balance);
+        casaDeApuestas = new CasaDeApuestas(lista);
     }
 
     @Test
     void notifyBalance() {
-        casaDeApuestas.notifyBalance(1);
+        BalanceNotifier balance = mock(BalanceNotifier.class);
+        casaDeApuestas.notifyBalance(balance,1);
         verify(balance).notifyBalance(u, 1, BigDecimal.TEN);
     }
 }

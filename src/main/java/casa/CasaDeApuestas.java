@@ -9,23 +9,19 @@ import java.util.Observer;
 
 public class CasaDeApuestas implements Observer {
     private List<User> usuarios;
-    private BalanceNotifier balanceNotifier;
 
     /**
-     * Constructor. Recibe una lista de usuarios, un historial, y un balancerNotifier
+     * Constructor. Recibe una lista de usuarios
      */
-    CasaDeApuestas(List<User> usuarios, BalanceNotifier balanceNotifier) {
+    CasaDeApuestas(List<User> usuarios) {
         this.usuarios = usuarios;
-        this.balanceNotifier = balanceNotifier;
     }
 
     /**
-     * Recibe un mes. Envia a cada usuario el balance (ganancia) del mes
+     * Envia a cada usuario el balance (ganancia) del mes
      */
-    void notifyBalance(Integer month) {
-        for (User u : usuarios) {
-            balanceNotifier.notifyBalance(u, month, u.getGanancia(Month.of(month)));
-        }
+    void notifyBalance(BalanceNotifier balanceNotifier, Integer month) {
+        usuarios.forEach(user -> balanceNotifier.notifyBalance(user, month, user.getGanancia(Month.of(month))));
     }
 
     @Override
