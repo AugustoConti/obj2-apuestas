@@ -2,7 +2,6 @@ package casa.partido;
 
 import casa.CasaDeApuestas;
 import casa.partido.deportes.DeporteInterface;
-import casa.partido.estados.EstadoPartido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +16,9 @@ class PartidoObservableTest {
 
     @BeforeEach
     void setUp() {
-                partido = new Partido(mock(DeporteInterface.class),
-                mock(OponenteInterface.class), mock(OponenteInterface.class),
-                mock(LocalDateTime.class), mock(String.class), Ganador.NINGUNO, mock(EstadoPartido.class));
+        partido = new Partido(mock(DeporteInterface.class),
+        mock(OponenteInterface.class), mock(OponenteInterface.class),
+        mock(LocalDateTime.class), mock(String.class), Ganador.NINGUNO);
         //TODO Testear observer.
         CasaDeApuestas o = mock(CasaDeApuestas.class);
         partido.addObserver(o);

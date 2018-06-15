@@ -17,7 +17,6 @@ class PartidoTest {
     private Partido partido;
     private OponenteInterface local;
     private OponenteInterface visitante;
-    private EstadoPartido estado;
     private LocalDateTime fecha;
 
     @BeforeEach
@@ -25,9 +24,7 @@ class PartidoTest {
         local = mock(OponenteInterface.class);
         visitante = mock(OponenteInterface.class);
         fecha = LocalDateTime.of(2018, 5, 25, 10, 0);
-        estado = mock(EstadoPartido.class);
-        when(estado.terminado()).thenReturn(true);
-        partido = new Partido(mock(DeporteInterface.class), local, visitante, fecha, "Bernal", Ganador.NINGUNO, estado);
+        partido = new Partido(mock(DeporteInterface.class), local, visitante, fecha, "Bernal", Ganador.NINGUNO);
     }
 
     @Test
@@ -41,13 +38,15 @@ class PartidoTest {
     }
 
     @Test
-    void ganador() {
-        assertTrue(partido.acierto(Ganador.NINGUNO));
+    void terminado() {
+        partido.nextState();
+        partido.nextState();
+        assertTrue(partido.terminado());
     }
 
     @Test
-    void terminado() {
-        assertTrue(partido.terminado());
+    void noTerminado() {
+        assertFalse(partido.terminado());
     }
 
     @Test
@@ -77,29 +76,19 @@ class PartidoTest {
 
     @Test
     void cancelarApuesta() throws Exception {
+        EstadoPartido estado = mock(EstadoPartido.class);
         TipeableInterface apuesta = mock(TipeableInterface.class);
+        partido.setState(estado);
         partido.cancelarApuesta(apuesta);
         verify(estado).cancelarApuesta(apuesta);
     }
 
     @Test
     void reactivarApuesta() throws Exception {
+        EstadoPartido estado = mock(EstadoPartido.class);
         TipeableInterface apuesta = mock(TipeableInterface.class);
+        partido.setState(estado);
         partido.reactivarApuesta(apuesta);
         verify(estado).reactivarApuesta(apuesta);
-    }
-
-    @Test
-    void nextState() {
-        partido.nextState();
-        verify(estado).nextState(partido);
-    }
-
-    @Test
-    void nextStateTerminado() {
-        EstadoPartido estadoTerminado = mock(EstadoPartido.class);
-        partido.setState(estadoTerminado);
-        partido.nextState();
-        verify(estadoTerminado).nextState(partido);
     }
 }
