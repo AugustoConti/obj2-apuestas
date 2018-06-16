@@ -2,11 +2,11 @@ package casa.partido;
 
 import java.time.LocalDate;
 
-public class Deportista implements OponenteInterface {
-    private String nombre;
-    private String apellido;
-    private LocalDate nacimiento;
-    private String lugarNac;
+class Deportista implements OponenteInterface {
+    private final String nombre;
+    private final String apellido;
+    private final LocalDate nacimiento;
+    private final String lugarNac;
 
     /**
      * Constructor. Recibe un nombre (string) , un apellido (string) , una fecha de nacimiento (LocalDate) y un lugar de nacimiento (string)

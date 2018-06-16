@@ -8,24 +8,23 @@ import casa.partido.estados.PartidoNoEmpezado;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Observable;
-import java.util.Observer;
 
 public class Partido extends Observable {
-    private DeporteInterface deporte;
-    private OponenteInterface local;
-    private OponenteInterface visitante;
-    private LocalDateTime comienzo;
-    private String lugar;
-    private Ganador ganador;
+    private final DeporteInterface deporte;
+    private final OponenteInterface local;
+    private final OponenteInterface visitante;
+    private final LocalDateTime fecha;
+    private final String lugar;
+    private final Ganador ganador;
     private EstadoPartido estado;
 
     //TODO sacar el "ganador" del constructor.
     public Partido(DeporteInterface deporte, OponenteInterface local, OponenteInterface visitante,
-                   LocalDateTime comienzo, String lugar, Ganador ganador) {
+                   LocalDateTime fecha, String lugar, Ganador ganador) {
         this.deporte = deporte;
         this.local = local;
         this.visitante = visitante;
-        this.comienzo = comienzo;
+        this.fecha = fecha;
         this.lugar = lugar;
         this.ganador = ganador;
         this.estado = new PartidoNoEmpezado();
@@ -34,14 +33,14 @@ public class Partido extends Observable {
     /**
      * Retorna el oponente local del partido
      */
-    public OponenteInterface local() {
+    public OponenteInterface getLocal() {
         return this.local;
     }
 
     /**
      * Retorna el openente visitante del partido
      */
-    public OponenteInterface visitante() {
+    public OponenteInterface getVisitante() {
         return this.visitante;
     }
 
@@ -60,10 +59,10 @@ public class Partido extends Observable {
     }
 
     /**
-     * Recibe un mes. Retorna true si el mes del comienzo del partido es igual al mes que recibe
+     * Recibe un mes. Retorna true si el mes del fecha del partido es igual al mes que recibe
      */
     public Boolean inMonth(Month month) {
-        return comienzo.getMonth() == month;
+        return fecha.getMonth() == month;
     }
 
     /**
@@ -95,14 +94,23 @@ public class Partido extends Observable {
         this.estado = estado;
     }
 
-    /**
-     * Retorna la fecha en la que comenzo el partido.s
-     */
-    public LocalDateTime fecha() {
-        return comienzo;
-    }
-
     public void cambiaste() {
         setChanged();
+    }
+
+    public DeporteInterface getDeporte() {
+        return deporte;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public Boolean conOponente(OponenteInterface oponente) {
+        return local == oponente || visitante == oponente;
     }
 }

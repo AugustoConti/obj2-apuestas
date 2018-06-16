@@ -28,7 +28,7 @@ class CasaDeApuestasTest {
     @Test
     void notifyBalance() {
         BalanceNotifier balance = mock(BalanceNotifier.class);
-        casaDeApuestas.notifyBalance(balance,1);
+        casaDeApuestas.notifyBalance(balance, 1);
         verify(balance).notifyBalance(u, 1, BigDecimal.TEN);
     }
 }

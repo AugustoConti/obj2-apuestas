@@ -8,7 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class CasaDeApuestas implements Observer {
-    private List<User> usuarios;
+    private final List<User> usuarios;
 
     /**
      * Constructor. Recibe una lista de usuarios

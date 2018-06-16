@@ -17,8 +17,8 @@ class PartidoObservableTest {
     @BeforeEach
     void setUp() {
         partido = new Partido(mock(DeporteInterface.class),
-        mock(OponenteInterface.class), mock(OponenteInterface.class),
-        mock(LocalDateTime.class), mock(String.class), Ganador.NINGUNO);
+                mock(OponenteInterface.class), mock(OponenteInterface.class),
+                mock(LocalDateTime.class), mock(String.class), Ganador.NINGUNO);
         //TODO Testear observer.
         CasaDeApuestas o = mock(CasaDeApuestas.class);
         partido.addObserver(o);

@@ -7,10 +7,10 @@ import java.math.BigDecimal;
 import java.time.Month;
 
 public class Apuesta {
-    private BigDecimal monto;
-    private Ganador favorito;
-    private Evento evento;
-    private TipoApuestaInterface tipo;
+    private final BigDecimal monto;
+    private final Ganador favorito;
+    private final Evento evento;
+    private final TipoApuestaInterface tipo;
 
     /**
      * Constructor. Crea una apuesta. Recibe un monto, un equipo, un evento y un tipo de apuesta
@@ -47,7 +47,7 @@ public class Apuesta {
      * Retorna la ganancia neta de la apuesta . retorna 0 si el evento no termino
      */
     public BigDecimal gananciaNeta() {
-        if (!evento.terminado()) {
+        if(!evento.terminado()) {
             return BigDecimal.ZERO;
         }
         return tipo.ganancia(evento, favorito, monto);

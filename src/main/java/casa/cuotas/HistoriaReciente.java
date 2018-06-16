@@ -9,10 +9,10 @@ import java.math.RoundingMode;
 
 public class HistoriaReciente implements CuotaInterface {
 
-    private Historial historial;
-    private static Integer cantUltimosNPartidos = 10;
+    private final Historial historial;
+    private final Integer cantUltimosNPartidos = 10;
 
-    public HistoriaReciente(Historial historial) {
+    HistoriaReciente(Historial historial) {
         this.historial = historial;
     }
 
@@ -32,18 +32,18 @@ public class HistoriaReciente implements CuotaInterface {
 
     @Override
     public BigDecimal local(Partido p) {
-        return probabilidadVictoriaDe(p.local());
+        return probabilidadVictoriaDe(p.getLocal());
     }
 
     @Override
     public BigDecimal empate(Partido p) {
-        return probabilidadEmpateDe(p.local())
-                .add(probabilidadEmpateDe(p.visitante()))
+        return probabilidadEmpateDe(p.getLocal())
+                .add(probabilidadEmpateDe(p.getVisitante()))
                 .divide(BigDecimal.valueOf(2), 2, RoundingMode.HALF_DOWN);
     }
 
     @Override
     public BigDecimal visitante(Partido p) {
-        return probabilidadVictoriaDe(p.visitante());
+        return probabilidadVictoriaDe(p.getVisitante());
     }
 }

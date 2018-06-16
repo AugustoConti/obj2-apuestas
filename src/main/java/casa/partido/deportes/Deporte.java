@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Deporte implements DeporteInterface {
 
-    private String nombre;
-    private List<Ganador> resultadosPosibles;
+    private final String nombre;
+    private final List<Ganador> resultadosPosibles;
 
     public Deporte(String nombre, List<Ganador> resultadosPosibles) {
         this.nombre = nombre;

@@ -3,25 +3,49 @@ package casa;
 import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
+import casa.partido.deportes.DeporteInterface;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Historial {
 
-    private List<Partido> historialDePartidos;
+    private final List<Partido> historialDePartidos;
 
     public Historial(List<Partido> historialDePartidos) {
         this.historialDePartidos = historialDePartidos;
     }
 
+    private List<Partido> filtrar(Predicate<Partido> predicate) {
+        return historialDePartidos.stream().filter(predicate).collect(Collectors.toList());
+    }
+
+    public List<Partido> partidosCon(DeporteInterface deporte) {
+        return filtrar(p -> p.getDeporte() == deporte);
+    }
+
+    public List<Partido> partidosCon(LocalDateTime fecha) {
+        return filtrar(p -> p.getFecha() == fecha);
+    }
+
+    public List<Partido> partidosCon(String lugar) {
+        return filtrar(p -> Objects.equals(p.getLugar(), lugar));
+    }
+
+    public List<Partido> partidosCon(OponenteInterface oponente) {
+        return filtrar(p -> p.conOponente(oponente));
+    }
+
     private List<Partido> partidosTerminados() {
-        return historialDePartidos.stream().filter(Partido::terminado).collect(Collectors.toList());
+        return filtrar(Partido::terminado);
     }
 
     private List<Partido> enfrentamientosEntre(OponenteInterface local, OponenteInterface visitante) {
-        return partidosTerminados().stream().filter(p -> p.local() == local && p.visitante() == visitante).collect(Collectors.toList());
+        return partidosTerminados().stream().filter(p -> p.getLocal() == local && p.getVisitante() == visitante).collect(Collectors.toList());
     }
 
     private List<Partido> resultadoDe(OponenteInterface local, OponenteInterface visitante, Ganador g) {
@@ -48,16 +72,16 @@ public class Historial {
     }
 
     private List<Partido> ultimosNPartidoDe(OponenteInterface oponente, Integer cantidad) {
-        return partidosTerminados().stream().filter(p -> p.local() == oponente || p.visitante() == oponente)
-                .sorted(Comparator.comparing(Partido::fecha).reversed())
+        return partidosTerminados().stream().filter(p -> p.getLocal() == oponente || p.getVisitante() == oponente)
+                .sorted(Comparator.comparing(Partido::getFecha).reversed())
                 .limit(cantidad)
                 .collect(Collectors.toList());
     }
 
     public Integer cantVictoriasEnUltimosNPartidos(OponenteInterface oponente, Integer cantUltimosNPartidos) {
         return ultimosNPartidoDe(oponente, cantUltimosNPartidos).stream()
-                .filter(p -> (p.local() == oponente && p.acierto(Ganador.LOCAL))
-                        || (p.visitante() == oponente && p.acierto(Ganador.VISITANTE)))
+                .filter(p -> (p.getLocal() == oponente && p.acierto(Ganador.LOCAL))
+                        || (p.getVisitante() == oponente && p.acierto(Ganador.VISITANTE)))
                 .collect(Collectors.toList()).size();
     }
 

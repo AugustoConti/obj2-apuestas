@@ -2,9 +2,9 @@ package casa.partido;
 
 import java.util.List;
 
-public class Equipo implements OponenteInterface {
-    private String nombre;
-    private List<OponenteInterface> deportistas;
+class Equipo implements OponenteInterface {
+    private final String nombre;
+    private final List<OponenteInterface> deportistas;
 
     /**
      * Constructor. Recine un nombre (string) y una lista de deportistas

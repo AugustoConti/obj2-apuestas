@@ -10,10 +10,10 @@ import java.time.Month;
 
 public class Evento {
 
-    private Partido partido;
-    private BigDecimal cuotaLocal;
-    private BigDecimal cuotaEmpate;
-    private BigDecimal cuotaVisitante;
+    private final Partido partido;
+    private final BigDecimal cuotaLocal;
+    private final BigDecimal cuotaEmpate;
+    private final BigDecimal cuotaVisitante;
 
     /**
      * Constructor. Crea un evento. Recibe un partido, y un algoritmo para definir la ganancia
@@ -67,7 +67,7 @@ public class Evento {
     public BigDecimal cuota(Ganador favorito) {
 
         BigDecimal cuota = null;
-        switch (favorito) {
+        switch(favorito) {
             case LOCAL:
                 cuota = cuotaLocal;
                 break;

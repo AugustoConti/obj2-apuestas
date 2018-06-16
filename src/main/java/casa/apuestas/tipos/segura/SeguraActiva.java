@@ -33,7 +33,7 @@ public class SeguraActiva implements SeguraInterface {
     public BigDecimal ganancia(Evento evento, Ganador favorito, BigDecimal monto) {
         Float porcentajeADescontar = 15f;
         BigDecimal ret;
-        if (evento.acierto(favorito))
+        if(evento.acierto(favorito))
             ret = evento.cuota(favorito).multiply(BigDecimal.valueOf(1 - porcentajeADescontar / 100));
         else
             ret = new BigDecimal(-1);

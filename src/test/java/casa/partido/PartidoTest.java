@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 class PartidoTest {
 
@@ -18,23 +19,25 @@ class PartidoTest {
     private OponenteInterface local;
     private OponenteInterface visitante;
     private LocalDateTime fecha;
+    private DeporteInterface deporte;
 
     @BeforeEach
     void setUp() {
         local = mock(OponenteInterface.class);
         visitante = mock(OponenteInterface.class);
+        deporte = mock(DeporteInterface.class);
         fecha = LocalDateTime.of(2018, 5, 25, 10, 0);
-        partido = new Partido(mock(DeporteInterface.class), local, visitante, fecha, "Bernal", Ganador.NINGUNO);
+        partido = new Partido(deporte, local, visitante, fecha, "Bernal", Ganador.NINGUNO);
     }
 
     @Test
     void local() {
-        assertEquals(local, partido.local());
+        assertEquals(local, partido.getLocal());
     }
 
     @Test
     void visitante() {
-        assertEquals(visitante, partido.visitante());
+        assertEquals(visitante, partido.getVisitante());
     }
 
     @Test
@@ -71,7 +74,32 @@ class PartidoTest {
 
     @Test
     void fecha() {
-        assertEquals(fecha, partido.fecha());
+        assertEquals(fecha, partido.getFecha());
+    }
+
+    @Test
+    void deporte() {
+        assertEquals(deporte, partido.getDeporte());
+    }
+
+    @Test
+    void lugar() {
+        assertEquals("Bernal", partido.getLugar());
+    }
+
+    @Test
+    void conOponenteLocal() {
+        assertTrue(partido.conOponente(local));
+    }
+
+    @Test
+    void conOponenteVisitante() {
+        assertTrue(partido.conOponente(visitante));
+    }
+
+    @Test
+    void conOponenteOtro() {
+        assertFalse(partido.conOponente(mock(OponenteInterface.class)));
     }
 
     @Test

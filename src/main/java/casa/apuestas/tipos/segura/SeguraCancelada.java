@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 public class SeguraCancelada implements SeguraInterface {
 
-    private SeguraCanceladaInterface estado;
+    private final SeguraCanceladaInterface estado;
 
     public SeguraCancelada(SeguraCanceladaInterface estado) {
         this.estado = estado;

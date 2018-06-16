@@ -7,9 +7,9 @@ import java.time.Month;
 import java.util.List;
 
 public class User {
-    private String nombre;
-    private String email;
-    private List<Apuesta> apuestas;
+    private final String nombre;
+    private final String email;
+    private final List<Apuesta> apuestas;
 
     /**
      * Constructor. Recibe un Nombre, un email y una lista de apuestas
@@ -20,7 +20,11 @@ public class User {
         this.apuestas = apuestas;
     }
 
-    public String email() { return this.email; }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEmail() { return this.email; }
 
     /**
      * Recibe una apuesta. Agrega la apuesta a la lista de apuestas

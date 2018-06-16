@@ -9,9 +9,9 @@ import java.math.RoundingMode;
 
 public class CompetenciaDirecta implements CuotaInterface {
 
-    private Historial historial;
+    private final Historial historial;
 
-    public CompetenciaDirecta(Historial historial) {
+    CompetenciaDirecta(Historial historial) {
         this.historial = historial;
     }
 
@@ -29,7 +29,7 @@ public class CompetenciaDirecta implements CuotaInterface {
      */
     @Override
     public BigDecimal local(Partido p) {
-        return porcentajeVictorias(p.local(), p.visitante());
+        return porcentajeVictorias(p.getLocal(), p.getVisitante());
     }
 
     /**
@@ -37,8 +37,8 @@ public class CompetenciaDirecta implements CuotaInterface {
      */
     @Override
     public BigDecimal empate(Partido p) {
-        return BigDecimal.valueOf(historial.cantEmpatesEntre(p.local(), p.visitante()))
-                .divide(BigDecimal.valueOf(historial.cantidadEnfrentamientos(p.local(), p.visitante())),
+        return BigDecimal.valueOf(historial.cantEmpatesEntre(p.getLocal(), p.getVisitante()))
+                .divide(BigDecimal.valueOf(historial.cantidadEnfrentamientos(p.getLocal(), p.getVisitante())),
                         2, RoundingMode.HALF_DOWN);
     }
 
@@ -47,6 +47,6 @@ public class CompetenciaDirecta implements CuotaInterface {
      */
     @Override
     public BigDecimal visitante(Partido p) {
-        return porcentajeVictorias(p.visitante(), p.local());
+        return porcentajeVictorias(p.getVisitante(), p.getLocal());
     }
 }

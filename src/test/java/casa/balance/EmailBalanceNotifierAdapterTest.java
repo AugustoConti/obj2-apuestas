@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class EmailBalanceNotifierAdapterTest {
 
@@ -16,7 +13,7 @@ class EmailBalanceNotifierAdapterTest {
     void notifyBalance() {
         EmailBalanceNotifier emailBalance = mock(EmailBalanceNotifier.class);
         User user = mock(User.class);
-        when(user.email()).thenReturn("mail");
+        when(user.getEmail()).thenReturn("mail");
         new EmailBalanceNotifierAdapter(emailBalance).notifyBalance(user, 1, BigDecimal.TEN);
         verify(emailBalance).emailBalance("mail", 1, BigDecimal.TEN);
     }

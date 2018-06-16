@@ -24,8 +24,8 @@ class HistoriaRecienteTest {
         OponenteInterface b = mock(OponenteInterface.class);
 
         partido = mock(Partido.class);
-        when(partido.local()).thenReturn(a);
-        when(partido.visitante()).thenReturn(b);
+        when(partido.getLocal()).thenReturn(a);
+        when(partido.getVisitante()).thenReturn(b);
 
         Historial historial = mock(Historial.class);
         when(historial.cantVictoriasEnUltimosNPartidos(a, 10)).thenReturn(3);
