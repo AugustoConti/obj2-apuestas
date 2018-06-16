@@ -1,9 +1,9 @@
 package casa;
 
+import casa.partido.Deporte;
 import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
-import casa.partido.deportes.DeporteInterface;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -24,7 +24,7 @@ public class Historial {
         return historialDePartidos.stream().filter(predicate).collect(Collectors.toList());
     }
 
-    public List<Partido> partidosCon(DeporteInterface deporte) {
+    public List<Partido> partidosCon(Deporte deporte) {
         return filtrar(p -> p.getDeporte() == deporte);
     }
 

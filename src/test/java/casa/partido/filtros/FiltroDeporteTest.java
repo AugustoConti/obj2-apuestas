@@ -1,8 +1,8 @@
 package casa.partido.filtros;
 
 import casa.Historial;
+import casa.partido.Deporte;
 import casa.partido.Partido;
-import casa.partido.deportes.Deporte;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

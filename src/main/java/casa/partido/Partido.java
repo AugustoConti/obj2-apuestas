@@ -1,7 +1,6 @@
 package casa.partido;
 
 import casa.TipeableInterface;
-import casa.partido.deportes.DeporteInterface;
 import casa.partido.estados.EstadoPartido;
 import casa.partido.estados.PartidoNoEmpezado;
 
@@ -10,7 +9,7 @@ import java.time.Month;
 import java.util.Observable;
 
 public class Partido extends Observable {
-    private final DeporteInterface deporte;
+    private final Deporte deporte;
     private final OponenteInterface local;
     private final OponenteInterface visitante;
     private final LocalDateTime fecha;
@@ -19,7 +18,7 @@ public class Partido extends Observable {
     private EstadoPartido estado;
 
     //TODO sacar el "ganador" del constructor.
-    public Partido(DeporteInterface deporte, OponenteInterface local, OponenteInterface visitante,
+    public Partido(Deporte deporte, OponenteInterface local, OponenteInterface visitante,
                    LocalDateTime fecha, String lugar, Ganador ganador) {
         this.deporte = deporte;
         this.local = local;
@@ -98,7 +97,7 @@ public class Partido extends Observable {
         setChanged();
     }
 
-    public DeporteInterface getDeporte() {
+    public Deporte getDeporte() {
         return deporte;
     }
 

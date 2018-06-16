@@ -1,10 +1,8 @@
-package casa.partido.deportes;
-
-import casa.partido.Ganador;
+package casa.partido;
 
 import java.util.List;
 
-public class Deporte implements DeporteInterface {
+public class Deporte {
 
     private final String nombre;
     private final List<Ganador> resultadosPosibles;
@@ -14,12 +12,10 @@ public class Deporte implements DeporteInterface {
         this.resultadosPosibles = resultadosPosibles;
     }
 
-    @Override
     public String nombre() {
         return this.nombre;
     }
 
-    @Override
     public List<Ganador> resultadosPosibles() {
         return this.resultadosPosibles;
     }

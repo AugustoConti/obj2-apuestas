@@ -1,10 +1,10 @@
 package casa.partido.filtros;
 
 import casa.Historial;
+import casa.partido.Deporte;
 import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
-import casa.partido.deportes.DeporteInterface;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -18,8 +18,8 @@ import static org.mockito.Mockito.mock;
 
 class FiltrosGeneralTest {
 
-    private final DeporteInterface futbol = mock(DeporteInterface.class);
-    private final DeporteInterface voley = mock(DeporteInterface.class);
+    private final Deporte futbol = mock(Deporte.class);
+    private final Deporte voley = mock(Deporte.class);
     private final OponenteInterface estudiantes = mock(OponenteInterface.class);
     private final OponenteInterface river = mock(OponenteInterface.class);
     private final OponenteInterface lanus = mock(OponenteInterface.class);

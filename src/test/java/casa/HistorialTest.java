@@ -1,9 +1,9 @@
 package casa;
 
+import casa.partido.Deporte;
 import casa.partido.Ganador;
 import casa.partido.OponenteInterface;
 import casa.partido.Partido;
-import casa.partido.deportes.DeporteInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -52,7 +52,7 @@ class HistorialTest {
 
     @Test
     void partidosConDeporte() {
-        DeporteInterface deporte = mock(DeporteInterface.class);
+        Deporte deporte = mock(Deporte.class);
         when(p1.getDeporte()).thenReturn(deporte);
         List<Partido> res = historial.partidosCon(deporte);
         assertEquals(1, res.size());

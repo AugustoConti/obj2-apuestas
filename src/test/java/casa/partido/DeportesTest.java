@@ -1,6 +1,5 @@
-package casa.partido.deportes;
+package casa.partido;
 
-import casa.partido.Ganador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

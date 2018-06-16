@@ -1,7 +1,6 @@
 package casa.partido;
 
 import casa.TipeableInterface;
-import casa.partido.deportes.DeporteInterface;
 import casa.partido.estados.EstadoPartido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,13 +18,13 @@ class PartidoTest {
     private OponenteInterface local;
     private OponenteInterface visitante;
     private LocalDateTime fecha;
-    private DeporteInterface deporte;
+    private Deporte deporte;
 
     @BeforeEach
     void setUp() {
         local = mock(OponenteInterface.class);
         visitante = mock(OponenteInterface.class);
-        deporte = mock(DeporteInterface.class);
+        deporte = mock(Deporte.class);
         fecha = LocalDateTime.of(2018, 5, 25, 10, 0);
         partido = new Partido(deporte, local, visitante, fecha, "Bernal", Ganador.NINGUNO);
     }
