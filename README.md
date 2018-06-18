@@ -11,7 +11,7 @@ Un partido o juego es una competencia deportiva en el que se enfrentan dos opone
 Partido:
 - Deporte
 - Oponentes
-- Fecha y hora de fecha
+- Fecha y hora de comienzo
 - Lugar donde se desarrolla la competición
 - Resultado parcial o final (siempre que la competición haya comenzado)
 
@@ -94,7 +94,7 @@ public class EmailBalanceNotifier {
 > Se debe permitir que la casa de apuestas notifique el balance por email, de la misma manera que lo hace por mensaje de texto.
 
 ## Sistema de Notificaciones
-Debe ser posible que diversos interesados puedan suscribirse y recibir notificaciones ante cambios en los partidos. En particular, son eventos de interés el fecha y la finalización de un partido.  
+Debe ser posible que diversos interesados puedan suscribirse y recibir notificaciones ante cambios en los partidos. En particular, son eventos de interés el comienzo y la finalización de un partido.  
 
 En primer lugar, los usuarios deben ser notificados cuando un partido en el que realizó una apuesta ha comenzado o finalizado. Esto le permitirá dar un seguimiento a sus apuestas.
 
