@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class CasaDeApuestas implements Observer {
+class CasaDeApuestas implements Observer {
     private final List<User> usuarios;
     private final Historial historial;
 
