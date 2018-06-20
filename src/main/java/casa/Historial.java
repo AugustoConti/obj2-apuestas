@@ -95,4 +95,7 @@ public class Historial {
                 .collect(Collectors.toList()).size();
     }
 
+    public void addPartido(Partido partido) {
+        historialDePartidos.add(partido);
+    }
 }

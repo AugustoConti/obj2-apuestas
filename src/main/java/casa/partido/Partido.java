@@ -17,7 +17,6 @@ public class Partido extends Observable {
     private final Ganador ganador;
     private EstadoPartido estado;
 
-    //TODO sacar el "ganador" del constructor.
     public Partido(Deporte deporte, OponenteInterface local, OponenteInterface visitante,
                    LocalDateTime fecha, String lugar, Ganador ganador) {
         this.deporte = deporte;
@@ -84,7 +83,6 @@ public class Partido extends Observable {
     public void nextState() {
         estado.nextState(this);
     }
-    // TODO setear resultado antes de finalizar el partido, que no lo reciba en el constructor
 
     /**
      * Recibe un estado. Setea el estado del partido con el que recibe
@@ -93,8 +91,9 @@ public class Partido extends Observable {
         this.estado = estado;
     }
 
-    public void cambiaste() {
+    public void notificarSuscriptores() {
         setChanged();
+        notifyObservers();
     }
 
     public Deporte getDeporte() {

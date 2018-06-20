@@ -1,30 +1,31 @@
 package casa.partido;
 
-import casa.CasaDeApuestas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.Observer;
 
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 class PartidoObservableTest {
 
     private Partido partido;
+    private Observer o;
 
     @BeforeEach
     void setUp() {
         partido = new Partido(mock(Deporte.class),
                 mock(OponenteInterface.class), mock(OponenteInterface.class),
-                mock(LocalDateTime.class), mock(String.class), Ganador.NINGUNO);
-        //TODO Testear observer.
-        CasaDeApuestas o = mock(CasaDeApuestas.class);
+                LocalDateTime.now(), "bernal", Ganador.NINGUNO);
+        o = mock(Observer.class);
         partido.addObserver(o);
     }
 
     @Test
-    void local() {
-        fail();
+    void observadorNotificado() {
+        partido.nextState();
+        verify(o).update(partido, null);
     }
 }

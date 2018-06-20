@@ -4,12 +4,12 @@ import casa.partido.Partido;
 
 import java.util.List;
 
-public class FiltroAND implements FiltroInterface {
+public class FiltroAND implements Filtrable {
 
-    private final FiltroInterface filtroL;
-    private final FiltroInterface filtroR;
+    private final Filtrable filtroL;
+    private final Filtrable filtroR;
 
-    FiltroAND(FiltroInterface filtroL, FiltroInterface filtroR) {
+    FiltroAND(Filtrable filtroL, Filtrable filtroR) {
         this.filtroL = filtroL;
         this.filtroR = filtroR;
     }

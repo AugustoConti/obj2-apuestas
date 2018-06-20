@@ -6,7 +6,7 @@ import casa.partido.Partido;
 
 import java.util.List;
 
-public class FiltroOponente implements FiltroInterface {
+public class FiltroOponente implements Filtrable {
 
     private final Historial historial;
     private final OponenteInterface oponente;

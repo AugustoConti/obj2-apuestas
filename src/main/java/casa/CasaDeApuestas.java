@@ -1,6 +1,7 @@
 package casa;
 
 import casa.balance.BalanceNotifier;
+import casa.partido.Partido;
 
 import java.time.Month;
 import java.util.List;
@@ -9,12 +10,19 @@ import java.util.Observer;
 
 public class CasaDeApuestas implements Observer {
     private final List<User> usuarios;
+    private final Historial historial;
 
     /**
      * Constructor. Recibe una lista de usuarios
      */
-    CasaDeApuestas(List<User> usuarios) {
+    CasaDeApuestas(List<User> usuarios, Historial historial) {
         this.usuarios = usuarios;
+        this.historial = historial;
+    }
+
+    void addPartido(Partido partido) {
+        partido.addObserver(this);
+        historial.addPartido(partido);
     }
 
     /**

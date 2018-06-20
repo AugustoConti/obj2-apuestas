@@ -16,8 +16,7 @@ public class Final implements TipoApuestaInterface {
     }
 
     /**
-     * La apuesta final es una apuesta que no puede cancelarse en ningún momento.
-     * Por conseceucia no se puede ractivar
+     * La apuesta final es una apuesta que no puede cancelarse en ningún momento. Por conseceucia no se puede ractivar
      */
     @Override
     public void reactivar(Evento evento) throws Exception {
@@ -30,7 +29,7 @@ public class Final implements TipoApuestaInterface {
     @Override
     public BigDecimal ganancia(Evento evento, Ganador favorito, BigDecimal monto) {
         BigDecimal ret;
-        if(evento.acierto(favorito))
+        if (evento.acierto(favorito))
             ret = evento.cuota(favorito);
         else
             ret = new BigDecimal(-1);

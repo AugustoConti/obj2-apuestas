@@ -23,11 +23,11 @@ class FiltroANDTest {
         p = mock(Partido.class);
 
         Partido p1 = mock(Partido.class);
-        FiltroInterface filtroL = mock(FiltroInterface.class);
+        Filtrable filtroL = mock(Filtrable.class);
         when(filtroL.filtrar()).thenReturn(new ArrayList<>(Arrays.asList(p1, p)));
 
         Partido p2 = mock(Partido.class);
-        FiltroInterface filtroR = mock(FiltroInterface.class);
+        Filtrable filtroR = mock(Filtrable.class);
         when(filtroR.filtrar()).thenReturn(new ArrayList<>(Arrays.asList(p, p2)));
 
         filtro = new FiltroAND(filtroL, filtroR);

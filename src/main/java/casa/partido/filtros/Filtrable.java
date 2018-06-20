@@ -4,6 +4,6 @@ import casa.partido.Partido;
 
 import java.util.List;
 
-public interface FiltroInterface {
+public interface Filtrable {
     List<Partido> filtrar();
 }

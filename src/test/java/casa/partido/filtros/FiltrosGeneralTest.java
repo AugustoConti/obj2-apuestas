@@ -71,6 +71,7 @@ class FiltrosGeneralTest {
                         new FiltroAND(new FiltroOponente(historial, estudiantes),
                                 new FiltroOponente(historial, river)))).filtrar();
         assertEquals(2, res.size());
+
         assertTrue(res.containsAll(Arrays.asList(p2, p4)));
     }
 }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.Month;
+import java.util.Observer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -62,4 +63,12 @@ class ApuestaTest {
         when(evento.inMonth(Month.JANUARY)).thenReturn(true);
         assertTrue(apuesta.inMonth(Month.JANUARY));
     }
+
+    @Test
+    void suscribirAPartido() {
+        Observer o = mock(Observer.class);
+        apuesta.suscribirAPartido(o);
+        verify(evento).suscribirAPartido(o);
+    }
+
 }

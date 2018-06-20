@@ -5,7 +5,7 @@ import casa.partido.Partido;
 
 import java.util.List;
 
-public class FiltroLugar implements FiltroInterface {
+public class FiltroLugar implements Filtrable {
 
     private final Historial historial;
     private final String lugar;

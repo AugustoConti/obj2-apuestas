@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.when;
 class HistorialTest {
 
     private Historial historial;
+    private List<Partido> listaPartidos;
     private OponenteInterface a;
     private OponenteInterface b;
     private Partido p1;
@@ -45,8 +47,7 @@ class HistorialTest {
         p2 = newPartido(b, a, Ganador.LOCAL);
         p3 = newPartido(a, b, Ganador.NINGUNO);
         p4 = newPartido(a, mock(OponenteInterface.class), Ganador.LOCAL);
-        List<Partido> listaPartidos = Arrays.asList(p1, p2, p3, p4);
-
+        listaPartidos = new ArrayList<>(Arrays.asList(p1, p2, p3, p4));
         historial = new Historial(listaPartidos);
     }
 
@@ -113,5 +114,12 @@ class HistorialTest {
     @Test
     void cantEmpatesEnUltimosNPartidos() {
         assertEquals(Integer.valueOf(1), historial.cantEmpatesEnUltimosNPartidos(a, 10));
+    }
+
+    @Test
+    void addPartido() {
+        Partido p = mock(Partido.class);
+        historial.addPartido(p);
+        assertTrue(listaPartidos.contains(p));
     }
 }

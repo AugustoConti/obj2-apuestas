@@ -22,8 +22,7 @@ public class PartidoNoEmpezado implements EstadoPartido {
     @Override
     public void nextState(Partido partido) {
         partido.setState(new PartidoEmpezado());
-        partido.cambiaste();
-        partido.notifyObservers();
+        partido.notificarSuscriptores();
     }
 
     /**

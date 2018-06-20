@@ -6,7 +6,7 @@ import casa.partido.Partido;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class FiltroFecha implements FiltroInterface {
+public class FiltroFecha implements Filtrable {
 
     private final Historial historial;
     private final LocalDateTime fecha;

@@ -9,7 +9,8 @@ class Deportista implements OponenteInterface {
     private final String lugarNac;
 
     /**
-     * Constructor. Recibe un nombre (string) , un apellido (string) , una fecha de nacimiento (LocalDate) y un lugar de nacimiento (string)
+     * Constructor. Recibe un nombre (string) , un apellido (string) , una fecha de nacimiento (LocalDate) y un lugar de
+     * nacimiento (string)
      */
     Deportista(String nombre, String apellido, LocalDate nacimiento, String lugarNac) {
         this.nombre = nombre;

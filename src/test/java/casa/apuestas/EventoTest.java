@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.Month;
+import java.util.Observer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -75,5 +76,12 @@ class EventoTest {
     @Test
     void cuotaVisitante() {
         assertEquals(0, evento.cuota(Ganador.VISITANTE).compareTo(BigDecimal.TEN));
+    }
+
+    @Test
+    void suscribirAPartido() {
+        Observer o = mock(Observer.class);
+        evento.suscribirAPartido(o);
+        verify(partido).addObserver(o);
     }
 }
