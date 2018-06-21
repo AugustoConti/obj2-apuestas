@@ -64,7 +64,7 @@ public class Partido extends Observable {
     }
 
     /**
-     * Recibe una apuesta. Cancela la apuesta . Lanza una excepcion si la misma no puede ser segura
+     * Recibe una apuesta. Cancela la apuesta . Lanza una excepcion si la misma no puede ser cancelada.
      */
     public void cancelarApuesta(TipeableInterface apuesta) throws Exception {
         estado.cancelarApuesta(apuesta);
@@ -91,6 +91,9 @@ public class Partido extends Observable {
         this.estado = estado;
     }
 
+    /**
+     * Avisa a sus observadores que ocurrio un cambio en sus estados.
+     */
     public void notificarSuscriptores() {
         setChanged();
         notifyObservers();
